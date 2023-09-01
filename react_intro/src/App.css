@@ -4,12 +4,21 @@
 
 .App-logo {
   height: 40vmin;
-  pointer-events: none;
+  /* fill: #61DAFB; */
 }
+.App-logo:hover {
+  height: 40vmin;
+  /* fill: red; */
 
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 10s linear;
+    animation-iteration-count: infinite;
+  }
+  .App-logo:hover {
+    animation: App-logo-spin infinite 1s linear;
+
   }
 }
 
@@ -29,10 +38,9 @@
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  0%   {fill:red; transform: rotate(0deg);}
+  25%  {fill:yellow; transform: rotate(90deg);}
+  50%  {fill:#61dafb; transform: rotate(180deg);}
+  75%  {fill:yellow; transform: rotate(270deg);}
+  100% {fill:red; transform: rotate(360deg);}
 }
