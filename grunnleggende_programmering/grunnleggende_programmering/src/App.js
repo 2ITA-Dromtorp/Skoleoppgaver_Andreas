@@ -1,5 +1,6 @@
 import './App.css';
 import Oppgave1 from './oppg1';
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +11,8 @@ function App() {
       </header>
     </div>
   );
-}
+} 
+
+ 
 
 export default App;
