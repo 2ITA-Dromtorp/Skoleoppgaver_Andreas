@@ -13,7 +13,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 10s linear;
+    animation: App-logo-spin infinite 5s linear;
     animation-iteration-count: infinite;
   }
   .App-logo:hover {
@@ -37,10 +37,26 @@
   color: #61dafb;
 }
 
+.SwitchButton {
+  position: absolute;
+}
+
+#Opener {
+ /* background-color: blue; */
+}
+
+#Closer {
+  /* background-color: red; */
+}
+
+.hidden {
+  display: none;
+}
+
 @keyframes App-logo-spin {
-  0%   {fill:red; transform: rotate(0deg);}
+  0%   {fill:red; transform: rotate(0deg); width: 40vmin;}
   25%  {fill:yellow; transform: rotate(90deg);}
-  50%  {fill:#61dafb; transform: rotate(180deg);}
+  50%  {fill:#61dafb; transform: rotate(180deg); width: 70vmin;}
   75%  {fill:yellow; transform: rotate(270deg);}
-  100% {fill:red; transform: rotate(360deg);}
+  100% {fill:red; transform: rotate(360deg); width: 40vmin;}
 }
