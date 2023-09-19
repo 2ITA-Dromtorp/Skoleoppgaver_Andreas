@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-
+import spiller_stein from './images/spiller_stein.png'
+import spiller_saks from './images/spiller_saks.png'
+import spiller_papir from './images/spiller_papir.png'
 let P1choice = ""
 
 let P2choice = ""
 
 let P2chooser = ""
+
+let DataSRC = ""
 
 let Win = false;
 
@@ -16,6 +20,7 @@ let Wincheck = "";
 // function P2chose() {
 //     console.log(P2chooser)
 // }
+function RPS() {
 function P1chooseRock() {
     P1choice = "Rock"
     // console.log(P1choice)
@@ -35,16 +40,21 @@ function P1chooseRock() {
         Win = false
         Lose = true
         Draw = false
+        Wincheck = "Du tapte! ;("
+
     } else if (P2choice == "Rock") {
         console.log("Draw")
         Win = false
         Lose = false
         Draw = true
+        Wincheck = "Uavgjort :("
     } else if (P2choice == "Scissors") {
         console.log("Win")
+        Wincheck = "DU VANT!"
         Win = true
         Lose = false
         Draw = false
+        console.log(Wincheck)
     }
     if (Win = true) {
         Wincheck = "DU VANT!"
@@ -139,15 +149,18 @@ function P1chooseScissors() {
     // console.log(Wincheck);
 }
 
-function RPS() {
+
 
     return(
         <>
             <p>Hallo</p>
-            <button onClick={P1chooseRock}>Stein</button>
-            <button onClick={P1chooseScissors}>Saks</button>
-            <button onClick={P1choosePaper}>Papir</button>
-            <h1>{Wincheck}</h1>
+            <img src={DataSRC}/>
+            <div className='RSPDiv'>
+            <button className='RSPButton' onClick={P1chooseRock}>Stein</button>
+            <button className='RSPButton' onClick={P1chooseScissors}>Saks</button>
+            <button className='RSPButton' onClick={P1choosePaper}>Papir</button>
+            </div>
+            <h1>Du {Wincheck}</h1>
         </>
     )
 
