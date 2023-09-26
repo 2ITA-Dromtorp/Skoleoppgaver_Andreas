@@ -19,7 +19,6 @@ function App() {
         {/* <DigitalClock/> */}
         {/* <DogIMG/> */}
         <RPS/>
-      <p>eifoh</p>
       </header>
     </div>
   );
