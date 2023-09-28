@@ -13,11 +13,7 @@ let P2chooser = ""
 
 // let imageSrc = "http://localhost:3000/static/media/maskin_ukjent.5025606cb64ad3592d28.png"
 
-let Win = false;
 
-let Draw = false;
-
-let Lose = false;
 
 let Wincheck = "";
 // function P2chose() {
