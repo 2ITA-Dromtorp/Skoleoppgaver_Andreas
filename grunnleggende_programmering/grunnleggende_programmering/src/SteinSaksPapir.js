@@ -34,37 +34,34 @@ function P1chooseRock() {
         P2choice = "Paper"
         setImageSrc2('http://localhost:3000/static/media/spiller_papir.b2147c7f6e18a1045155.png');
         setvarCount(varCount + 1)
+        Wincheck = "Du tapte! ;("
     } else if (P2chooser == -2) {
         P2choice = "Rock"
         setImageSrc2('http://localhost:3000/static/media/spiller_stein.ab12836449331578c253.png');
         setvarCount2(varCount2 + 1)
+        Wincheck = "Uavgjort :("
     } else if (P2chooser == -3) {
         P2choice = "Scissors"
         setImageSrc2('http://localhost:3000/static/media/spiller_saks.cca7bfaa16770d465603.png');
         setvarCount3(varCount3 + 1)
         setWincount(WinCount + 1)
+        Wincheck = "DU VANT!"
     }
     
     if (P2choice == "Paper") {
         console.log("FUCK")
-        Win = false
-        Lose = true
-        Draw = false
-        Wincheck = "Du tapte! ;("
+
+
         setLosecount(LoseCount + 1)
 
     } else if (P2choice == "Rock") {
         console.log("Draw")
-        Win = false
-        Lose = false
-        Draw = true
-        Wincheck = "Uavgjort :("
+
+
     } else if (P2choice == "Scissors") {
         console.log("Win")
-        Wincheck = "DU VANT!"
-        Win = false
-        Lose = false
-        Draw = false
+
+
         console.log(Wincheck)
     } else {
         console.log("ERROR")
@@ -88,32 +85,28 @@ function P1choosePaper() {
     if (P2chooser == -1) {
         P2choice = "Paper"
         setImageSrc2('http://localhost:3000/static/media/spiller_papir.b2147c7f6e18a1045155.png');
-        
+        Wincheck = "Uavgjort :("
 
     } else if (P2chooser == -2) {
         P2choice = "Rock"
         setImageSrc('http://localhost:3000/static/media/spiller_stein.ab12836449331578c253.png');
+        Wincheck = "DU VANT!"
     } else if (P2chooser == -3) {
         P2choice = "Scissors"
         setImageSrc2('http://localhost:3000/static/media/spiller_saks.cca7bfaa16770d465603.png');
+        Wincheck = "Du tapte! ;("
     }
     if (P2choice == "Paper") {
         console.log("Draw")
-        Win = false
-        Lose = false
-        Draw = true
+
         
     } else if (P2choice == "Rock") {
         console.log("Win")
-        Win =  true
-        Lose = false
-        Draw = false
+
         setWincount(WinCount + 1)
     } else if (P2choice == "Scissors") {
         console.log("FUCK")
-        Win = false
-        Lose = true
-        Draw = false
+
         setLosecount(LoseCount + 1)
     }
 
@@ -130,30 +123,27 @@ function P1chooseScissors() {
     if (P2chooser == -1) {
         P2choice = "Paper"
         setImageSrc2('http://localhost:3000/static/media/spiller_papir.b2147c7f6e18a1045155.png');
+        Wincheck = "DU VANT!"
     } else if (P2chooser == -2) {
         P2choice = "Rock"
         setImageSrc('http://localhost:3000/static/media/spiller_stein.ab12836449331578c253.png');
+        Wincheck = "Du tapte! ;("
     } else if (P2chooser == -3) {
         P2choice = "Scissors"
         setImageSrc2('http://localhost:3000/static/media/spiller_saks.cca7bfaa16770d465603.png');
+        Wincheck = "Uavgjort :("
     }
     if (P2choice == "Paper") {
         console.log("WIN")
-        Win = true
-        Lose = false
-        Draw = false
+
         setWincount(WinCount + 1)
     } else if (P2choice == "Rock") {
         console.log("FUCK")
-        Win = false
-        Lose = true
-        Draw = false
+
         setLosecount(LoseCount + 1)
     } else if (P2choice == "Scissors") {
         console.log("DRAW")
-        Win = false
-        Lose = false
-        Draw = true
+
     }
 
     // console.log(Wincheck);
