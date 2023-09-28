@@ -55,7 +55,7 @@
 }
 
 .top {
-  /* border-bottom: solid 1px red; */
+  border-bottom: solid 0.5vh goldenrod;
   height: 100%;
   width: 100%;
   display: flex;
@@ -75,7 +75,7 @@
 }
 
 .bottom {
-  border: solid 1px white;
+
   height: 100%;
   width: 100%;
   display: flex;
