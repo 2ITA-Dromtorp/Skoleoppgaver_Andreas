@@ -1,57 +1,82 @@
+
 import logo from './logo.svg';
 import './App.css';
+import Elev from './elev';
+import NotElev from './notelev';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Andreas from './Andreas';
+import Chen from './Chen';
 
 function App() {
 
 
   return (
+    
+    <>
+
+
     <div className='container'>
       <header>
         <nav>
-          <a className='logoText' href='#'>Klasseliste 2IM Drømtorp</a>
+        <Link to="/"> <h2 className='logoText'>Klasseliste 2IM Drømtorp </h2></Link> 
         </nav>
       </header>
       <main className='klassen'>
+      <Routes>
+        <Route path="/Andreas" element={<Andreas/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/Chen" element={<Chen/>}/>
+      </Routes>
+      
       <div className='rad1'>
           
-        <div className='person lerer'>Lærer</div>
+
+      <Elev name="Lærer"/>
 
 
 
       </div>
 
       <div className='rad2'>
-      <div className='person'>Martin</div>
-      <div className='person'>Mathias</div>
-      <div className='innaktivperson'></div>
-      <div className='person'>Kevin</div>
-      <div className='person'></div>
-      <div className='person'>Andreas</div>
+      <Elev name="Martin"/>
+      <Elev name="Mathias"/>
+      <NotElev/>
+      <Elev name="Kevin"/>
+      <Elev name=""/>
+      <Elev name="Andreas"/>
+
+    
       </div>
 
       <div className='rad3'>
-      <div className='person'>Falk</div>
-      <div className='person'>Sander</div>
-      <div className='innaktivperson'></div>
-      <div className='person'>Ylva</div>
-      <div className='person'>Vanessa</div>
-      <div className='person'>Chen</div>
+      <Elev name="Falk"/>
+      <Elev name="Sander"/>
+      <NotElev/>
+      <Elev name="Ylva"/>
+      <Elev name="Vanessa"/>
+      <Elev name="Chen"/>
       </div>
 
       <div className='rad4'>
-      <div className='person'></div>
-      <div className='person'></div>
-      <div className='innaktivperson'></div>
-      <div className='person'>Luz</div>
-      <div className='person'></div>
-      <div className='person'>Fritjof</div>
+      <Elev name=""/>
+      <Elev name=""/>
+      <NotElev/>
+      <Elev name="Luz"/>
+      <Elev name=""/>
+      <Elev name="Fridtjof"/>
       </div>
       </main>
       <footer>
 
       </footer>
     </div>
+
+      
+
+      </>
   );
 }
+
 
 export default App;

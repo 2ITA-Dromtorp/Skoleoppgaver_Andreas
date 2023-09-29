@@ -32,11 +32,18 @@ a {
   font-size: 2.3em;
   color: white;
   text-decoration: none;
-  text-align: center;
+  /* text-align: center; */
+  font-weight: 700;
+  position: relative;
+  top: -5vh;
 }
 
 .logoText:hover {
   text-decoration: underline;
+}
+
+.backbutton {
+  color: black;
 }
 
 .klassen {
@@ -87,11 +94,13 @@ a {
   height: 50%;
   width: 16.66%;
   border: 2px solid white;
+  border-radius: 10px;
   font-size: 2em;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .person:hover {
@@ -104,9 +113,30 @@ a {
   width: 16.66%;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.Elevinfo {
+  height: 100%;
+  width: 100%;
+  position: sticky;
+  top: 1px;
+  z-index: 1000;
+  background-color: white;
+}
+
+.eleven {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .lerer {
   position: relative;
-  right: -34vw;
+  /* right: -34vw; */
 }
 
 @media (prefers-reduced-motion: no-preference) {
