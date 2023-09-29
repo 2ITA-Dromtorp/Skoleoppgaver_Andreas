@@ -24,6 +24,10 @@ nav {
   color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
 .logoText {
   font-size: 2.3em;
   color: white;
@@ -89,6 +93,12 @@ nav {
   justify-content: center;
   align-items: center;
 }
+
+.person:hover {
+  font-size: 2.2em;
+  text-decoration: underline;
+}
+
 .innaktivperson {
   height: 50%;
   width: 16.66%;
