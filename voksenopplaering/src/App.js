@@ -1,23 +1,17 @@
-
 import './App.css';
+import Navbar from './Navbar'
+import Home from './Homepage'
 import logo from './images/dromtorp-videregaende-skole.svg'
+import { Route, Routes, Link, BrowserRouter } from 'react-router-dom';
+
 function App() {
   return (
-    <header>
-      <nav className='navBar'>
-        <div className='navlogoDiv'>
-          <img className='logo' src={logo}/>
-        </div>
-        <div className='navbuttonDiv'>
-        <div><button className='navButton'>Min profil</button></div>
-        <div><button className='navButton'>Om oss</button></div>
-        <div><button className='navButton'>Kontakt oss</button></div>
-        </div>
-      </nav>
-
-      <p>dewfopkdjfwpfji</p>
-    </header>
-
+    <>
+    <Navbar/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+    </Routes>
+    </>
   );
 }
 
