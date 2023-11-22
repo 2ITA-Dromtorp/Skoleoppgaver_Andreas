@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import profileIMG from './images/profile-image.jpg'
 import json from './profiles'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Profile() {
 
@@ -10,19 +10,19 @@ export default function Profile() {
     const navigate = useNavigate();
     console.log(profile);
 
-
+                
     const [student, setStudent] = useState({});
 
-useEffect(() => {
+    useEffect(() => {
 
-    json.elever.map((elev) => {
-        if (profile == elev.navn) {
-            setStudent(elev)
+    json.elever.map((item, index) => {
+        if (profile == item.navn) {
+            console.log(item);
+            setStudent(item)
         }
     })
-    
-}, [])
-    
+
+ }, [])
 
     return (
         <>

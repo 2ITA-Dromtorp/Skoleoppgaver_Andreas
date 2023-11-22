@@ -1,17 +1,13 @@
 import Elev from './Elev';
-import Shufflebutton from './elevnamelist'
 
 export default function Klassekart() {
 
-
-
     return (
         <div className='container'>
-   <Shufflebutton />
+
       <div className='learer'>
 
         <Elev name="Lærer"/>
-       
 
       </div>
       

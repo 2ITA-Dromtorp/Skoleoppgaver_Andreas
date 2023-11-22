@@ -1,0 +1,42 @@
+.navBar {
+  display: flex;
+  height: 12vh;
+  width: 100vw;
+  border-bottom: solid 1px gray;
+  /* background-color: red; */
+}
+
+.navlogoDiv {
+  width: 40%;
+  height: 100%;
+  align-items: center;
+  /* background-color: blue; */
+}
+
+.navbuttonDiv {
+  width: 60%;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.logo {
+  width: 50%;
+  position: relative;
+  bottom: -19%;
+  right: -1%;
+}
+
+.navButton {
+  width: 33.33333%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  transition:  0.5s;
+}
+
+.navButton:hover {
+  background-color: rgb(34, 172, 172);
+  border-bottom: rgb(9, 116, 116) solid 5px;
+  color: white;
+
+}
