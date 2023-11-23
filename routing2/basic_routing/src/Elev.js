@@ -1,4 +1,3 @@
-
 export default function Elev(props) {
 
     let name = props.name;

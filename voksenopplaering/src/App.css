@@ -1,8 +1,22 @@
+* {
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+}
+
+header {
+  box-shadow: 0px 1px 10px 1px #000000;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+
 .navBar {
   display: flex;
   height: 12vh;
   width: 100vw;
   border-bottom: solid 1px gray;
+  position: sticky;
+  top: 0;
   /* background-color: red; */
 }
 
@@ -10,6 +24,8 @@
   width: 40%;
   height: 100%;
   align-items: center;
+  position: relative;
+  left: 1%;
   /* background-color: blue; */
 }
 
@@ -50,7 +66,9 @@
 .mainBox {
   /* background-color: red; */
   width: 100vw;
-  height: 100vh;
+  /* max-width: 1600px; */
+  height: 200vh;
+  overflow-y: scroll;
 }
 
 .homeHeader {
@@ -59,16 +77,37 @@
 
 .kursContainer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.kursCardDiv {
+  display: flex;
+  justify-content: center;
+  width: 50%; 
+  height: fit-content;
+  /* margin-top: 200px; */
 }
 
 .kursCard {
   display: flex;
   flex-direction: column;
   /* background-color: red; */
-  width: 30vw;
-  height: 65vh;
+  width: 20vw;
+  height: fit-content;
   border: 1px solid gray;
+  margin-bottom: 20px; /* Add some margin between the cards */
+  color: black;
+  text-decoration: none;
+  position: relative;
+  margin-top: 20px;
+  transition: 0.3s;
+  bottom: -10px;
+}
+
+.kursCard:hover {
+  bottom: 5px;
 }
 
 .kursIMGDiv {
@@ -80,7 +119,7 @@
 }
 
 .kursIMG {
-  width: 80%;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 }
@@ -97,7 +136,7 @@
 }
 
 .kursPDiv {
-  height: 15%;
+  height: fit-content;
   width: 100%;
   /* background-color: red; */
 }
@@ -110,7 +149,7 @@
 
 .kursButtonDiv {
   width: 100%;
-  height: 10%;
+  height: 8vh;
   /* background-color: yellow; */
 }
 
@@ -120,7 +159,7 @@
   height: 100%;
   width: 100%;
   border: none;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .kursButton:hover {
