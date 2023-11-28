@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
-import placeHolderIMG from './images/catTank.jpg'
+import placeHolderIMG from './images/melvin.jpg'
+import { useEffect } from 'react'
 
 
 function Home() {
+
+
 
     return (
         <main className="mainBox">

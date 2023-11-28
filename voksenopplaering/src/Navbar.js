@@ -14,7 +14,7 @@ function Navbar() {
   <div className='navbuttonDiv'>
   <div className='navbuttonsubDiv'><button className='navButton'>Min profil</button></div>
   <div className='navbuttonsubDiv'><button className='navButton'>Om oss</button></div>
-  <div className='navbuttonsubDiv'><button className='navButton'>Kontakt oss</button></div>
+  <Link className='navbuttonsubDiv' to={'/loginpage'}><button className='navButton'>Logg inn/Registrer deg</button></Link>
   </div>
 </nav>
 </header>
