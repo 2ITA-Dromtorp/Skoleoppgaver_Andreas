@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
+import { containerClasses } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { IsLoggedInContext, FirstnameContext } from './context';
 
-function LoginPage() {
+function Login() {
     const navigate = useNavigate();
-    let Userinformation = "Du er ikke logget inn. Vennligst logg inn.";
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
+    const { Firstname, setFirstname } = useContext(FirstnameContext);
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password, firstName, lastName);
-        Userinformation = email;
-        register();
-        navigate("/");
+        console.log(email, password);
+        login();
+        // navigate("/");
     };
 
-    const register = () => {
+    const login = () => {
         const dataToSend = {
             email: email,
             password: password,
-            firstName: firstName,
-            lastName: lastName
         }
-        fetch('/create-user', {
+    
+        fetch('/login', {
             method:'POST',
             headers:{
               "content-type":"application/json",
@@ -35,26 +38,46 @@ function LoginPage() {
         })
         .then(async (res) => {
             const data = await res.json();
-            console.log(data);
-            setIsLoggedIn(true);
+            if (res.status===200) {
+                console.log("NEIENEIPEJEEIO")
+                setIsLoggedIn(true);
+                setFirstname(data[0].Fornavn);
+                setLastName(data[0].Etternavn);
+            } else {
+                // Display error message or handle unsuccessful login
+            }
         })
         .catch((error) => {
             console.error('Error fetching data:', error);
         });
+        
     };
+    
+    useEffect(()=>{
+        console.log("MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        if(lastName!=='') {
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+            localStorage.setItem('firstname', firstName);
+            localStorage.setItem('lastname', lastName);
+            console.log(localStorage);
+        }
+        
+    }, [lastName])
 
-    const handleLoginClick = () => {
-        navigate("/login");
+    const handleRegisterClick = () => {
+        navigate("/loginpage");
     };
 
     if (isLoggedIn === true) {
         return (
-            <p>LOGGET INN!</p>
+            <main>
+                <p>LOGGED IN! {localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</p>
+            </main>
         )
     } else {
         return (
             <main>
-                <p>{email}</p>
                 <div className='loginForm'>
                     <form onSubmit={handleSubmit}>
                         <div className='loginDiv'>
@@ -85,46 +108,22 @@ function LoginPage() {
                                 />
                             </div>
                         </div>
-                        <div className='loginDiv'>
-                            <div className='logintextDiv'> 
-                                <label htmlFor="firstName">Fornavn:</label>
-                            </div>
-                            <div className='labelDiv'>
-                                <input
-                                    className='textInput'
-                                    type="text"
-                                    id="firstName"
-                                    value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
-                                />
-                            </div>
-                        </div>
-                        <div className='loginDiv'>
-                            <div className='logintextDiv'>
-                                <label htmlFor="lastName">Etternavn:</label>
-                            </div>
-                            <div className='labelDiv'>
-                                <input
-                                    className='textInput'
-                                    type="text"
-                                    id="lastName"
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
-                                />
-                            </div>
-                        </div>
+                        <div className='spaceDiv'></div>
                         <div className='submitDiv'>
-                            <input className='submitButton' type="submit" value="Registrer deg" />
+                            <input className='submitButton' type="submit" value="Logg inn" />
                         </div>
                         <div className='noAccountDiv'>
-                        <button className='noAccountButton' onClick={handleLoginClick}>Har du allerede en konto? Logg inn!</button>
+                        <button className='noAccountButton' onClick={handleRegisterClick}>Har du ikke konto? Registrer deg!</button>
                         </div>
                     </form>
                 </div>
+
+                  
+
             </main>
         );
     }
 }
 
-export default LoginPage;
+export default Login;
 

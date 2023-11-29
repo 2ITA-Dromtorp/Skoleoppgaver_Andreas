@@ -4,14 +4,34 @@
 }
 
 main {
+  /* background-color: #003153; */
+    background-color: #546672;
+  width: 100vw;
+  height: 150vh;
+}
+
+.kursMain {
+  /* background-color: #003153; */
+    background-color: #546672;
+  width: 100vw;
+  height: 100vh;
+}
+
+.mainBox {
+  /* background-color: red; */
+  /* width: 100vw; */
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 200vh;
+  /* overflow-y: scroll; */
   background-color: #546672;
+  /* background-color: #003153; */
 }
 
 header {
   box-shadow: 0px 1px 10px 1px #000000;
   z-index: 1000;
-  position: sticky;
-  top: 0;
+  position: relative;
 }
 
 .navBar {
@@ -19,8 +39,7 @@ header {
   height: 12vh;
   width: 100vw;
   border-bottom: solid 1px gray;
-  position: sticky;
-  top: 0;
+
   /* background-color: red; */
 }
 
@@ -64,19 +83,17 @@ header {
 
 }
 
+.homeH2 {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
 .navbuttonsubDiv {
   width: 33.33333%;
 }
 
-.mainBox {
-  /* background-color: red; */
-  /* width: 100vw; */
-  max-width: 1600px;
-  margin: 0 auto;
-  height: 200vh;
-  /* overflow-y: scroll; */
-  background-color: #546672;
-}
+
 
 .homeHeader {
   color: white;
@@ -102,8 +119,8 @@ header {
   display: flex;
   flex-direction: column;
   background-color: white; 
-  width: 20vw;
-  height: fit-content;
+  width: 25vw;
+  height: 70vh;
   border: 1px solid gray;
   margin-bottom: 20px; /* Add some margin between the cards */
   color: black;
@@ -145,7 +162,7 @@ header {
 }
 
 .kursPDiv {
-  height: fit-content;
+  height: 15%;
   width: 100%;
   text-align: center;
   /* background-color: red; */
@@ -180,7 +197,7 @@ header {
 
 .loginForm {
   width: 40%;
-  height: 75vh;
+  height: 85vh;
   background-color: lightgray;
   display: flex;
   flex-direction: column;
@@ -189,7 +206,7 @@ header {
   align-items: center;
   margin: 5vh auto;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 10px 1px #000000;
 }
 
 .loginForm form {
@@ -198,9 +215,15 @@ header {
 }
 
 .submitDiv {
-  height: 25%;
+  height: 15%;
   width: 100%;
 }
+
+.spaceDiv {
+  height: 30%;
+}
+
+
 
 .submitButton {
   width: 100%;
@@ -210,6 +233,27 @@ header {
   font-size: 1.5vw;
   text-align: center;
   margin-top: 3%;
+}
+
+.noAccountDiv {
+  width: 100%;
+  align-items: center;
+}
+
+.noAccountButton {
+  border: none;
+  font-size: 107%;
+  background-color: transparent;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  color: #006298;
+}
+
+.noAccountButton:hover {
+  text-decoration: underline;
 }
 
 /* .submitButton:hover {
@@ -241,7 +285,77 @@ labelDiv input {
   width: 97%;
 }
 
-.loginForm input:hover {
+.profilecard {
+  width: 60%;
+  height: 130vh;
+  background-color: white;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 5vh auto;
+  border-radius: 10px;
+  box-shadow: 0px 1px 10px 1px #000000;
+} 
 
-  /* border: lightblue; */
+.kursetIMG {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }
+
+.kursetIMGDiv {
+  width: 50%;
+  height: 40%;
+  overflow-y: hidden;
+}
+
+.kursetbeskrivelse {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  bottom: -3%;
+}
+
+table {
+  width: 50%;
+  height: 15%;
+  border: 1px solid gray;
+  background-color: #E4F4FC;
+}
+
+td {
+  border: 1px solid gray;
+  text-align: center;
+  background-color: white; 
+}
+
+.kursetButton {
+  width: 50%;
+  height: 10%;
+  background-color: #E4F4FC;
+  border: 0px transparent;
+  transition: 0.2s;
+  position: relative;
+  top: 2%;
+  border-radius: 10px;
+  border: 1px solid #006298;
+  font-size: 85%;
+}
+
+.kursetButton:hover {
+  background-color: #006cad;
+  border: 2px solid black;
+  border-bottom: 3px solid   #003153;
+  box-shadow: 0px 1px 10px 1px #003153;
+  color: white;
+  font-weight: bold;
+  font-size: 100%;
+  text-decoration: underline;
+}
+
+/* .loginForm input:hover {
+
+   border: lightblue; 
+} */

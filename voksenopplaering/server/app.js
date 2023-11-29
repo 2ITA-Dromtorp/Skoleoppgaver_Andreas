@@ -37,3 +37,49 @@ app.post('/create-user',(req, res) => {
         }
     })
 })
+
+// app.post('/login', (req, res) => {
+//     const email = b.email;
+//     const password = b.password;
+
+//     dbConfig.query(
+//         'SELECT * FROM logintable WHERE epost = ? AND Passord = ?',
+//         [username, password],
+//        (err, result) => {
+//             if (err) {
+//                 console.log(err);
+//             } if(result) {
+//                 res.send(result);
+//             } else {
+//                 res.send({ err: "Feil brukernavn eller passord" });
+//             }
+
+        
+//     }
+//     )
+//     }
+
+// )
+app.post('/login',(req, res) => {
+    const b = req.body
+    const email = b.email;
+    const password = b.password;
+    const query = 'SELECT * FROM logintable WHERE epost = ? AND Passord = ?'
+    const values = [email, password]
+
+
+    connection.query(query, values, (err, result) => {
+        if (err){
+            console.log(err)
+            res.status(500).send(err)
+        } else {
+            if(result.length > 0){
+                res.status(200).send(result)  
+            } else {
+                res.status(401).send({ err: "Feil brukernavn eller passord" });
+            }
+        }
+    })
+}
+  
+)
