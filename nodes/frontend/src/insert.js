@@ -6,53 +6,58 @@ export default function Insert() {
 
 
            
-            let Userinformation = "Du er ikke logget inn. Vennligst logg inn.";
-            const [fornavn, setFornavn] = useState('');
-            const [etternavn, setEtternavn] = useState('');
-            const [klasse, setKlasse] = useState('');
-            const [hobby, setHobby] = useState('');            
-            const [kjonn, setKjonn] = useState('');
-            const [datamaskinID, setDatamaskinID] = useState('');
+    let Userinformation = "Du er ikke logget inn. Vennligst logg inn.";
 
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                console.log(fornavn, etternavn, klasse, hobby, kjonn, datamaskinID);
-
-                register();
-
-            };
-        
-            const register = () => {
-                const dataToSend = {
-                    fornavn: fornavn,
-                    etternavn: etternavn,
-                    klasse: klasse,
-                    hobby: hobby,
-                    kjonn: kjonn,
-                    datamaskinID: datamaskinID
-                }
-                console.log(dataToSend)
-                fetch('/create-user', {
-                    method:'POST',
-                    headers:{
-                      "content-type":"application/json",
-                    },
-                    body:JSON.stringify(dataToSend),
-                })
-                .then(async (res) => {
-                    const data = await res.json();
-                    console.log(data);
-                    setIsLoggedIn(true);
-                })
-                .catch((error) => {
-                    console.error('Error fetching data:', error);
-                });
-            };
-        
+    const [fornavn, setFornavn] = useState('');
+    const [etternavn, setEtternavn] = useState('');
+    const [klasse, setKlasse] = useState('');
+    const [hobby, setHobby] = useState('');
+    const [kjonn, setKjonn] = useState('');
+    const [datamaskinID, setDatamaskinID] = useState('');
+    
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(fornavn, etternavn, klasse, hobby, kjonn, datamaskinID);
+      register();
+    };
+    
+    const register = () => {
+        console.log("FOAFIUAOFUAOFIU")
+      const dataToSend = {
+        fornavn: fornavn,
+        etternavn: etternavn,
+        klasse: klasse,
+        hobby: hobby,
+        kjonn: kjonn,
+        datamaskinID: datamaskinID
+      };
+    
+      console.log(dataToSend);
+    
+      fetch('http://localhost:3001/faenhelvete', {
+        method: 'POST',
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(dataToSend),
+      })
+      .then(async (res) => {
+        if (res.status === 404) {
+          console.error('Endpoint not found. Check server configuration.');
+          // Handle the 404 error appropriately
+        } else if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        const data = await res.json();
+        console.log(data);
+      });
+    };
+    
 
         
                 return (
                     <main>
+                        
                         <p>{fornavn}</p>
                         <div className='loginForm'>
                             <form onSubmit={handleSubmit}>

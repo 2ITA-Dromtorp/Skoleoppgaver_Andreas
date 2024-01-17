@@ -1,14 +1,15 @@
 *{
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .App{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: #4F616F;
 }
 
 .navbar{
@@ -18,10 +19,29 @@
   align-items: center;
   width: 100%;
   height: 10vh;
-  background-color: #d87093;
-  color: white; 
+  background-color: #003153;
+  box-shadow: 0px 3px 7px 3px black;
+  color: white;
   position: sticky;
-  top: 0;
+  top: 0px;
+  z-index: 200;
+}
+
+.navbar-item{
+  width: 20%;	
+  height: 80%;
+  background-color: white;
+  color: black;
+  border: solid black 1px;
+  border-radius: 10px;
+  font-size: 1.6vw;
+  transition: 0.5s;
+}
+
+.navbar-item:hover {
+  background-color: rgba(20, 20, 20, 0.8);
+  color: white;
+  border: white 1px solid;
 }
 
 .mainbox{
@@ -30,21 +50,34 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
+  height: fit-content;
+  background-color: white;
+  padding-bottom: 9%;
+  box-shadow: 0px 3px 7px 2px;
 }
 
-.content{
+.content {
+  width: 100vw;
+}
+
+.contents{
   display: flex;
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1500px;
   flex-wrap: wrap;
   flex-direction: column;
 }
 
 button{
-  width: 10%;	
+  /* width: 20%;	
   height: 80%;
-  background-color: #d87093;
-  color: white;
-  border: solid pink 1px;
+  background-color: white;
+  color: black;
+  border: solid black 1px;
+  border-radius: 10px;
+  font-size: 1.6vw; */
 }
 
 .table-container {

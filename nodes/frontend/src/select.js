@@ -18,8 +18,8 @@ export default function Select() {
 
 
     return (
-        <div className='content'>
-            <h1 className='headerText'>Her er select</h1>
+        <div className='contents'>
+            <h1 className='headerText'>Elever</h1>
             <table className='styled_table'>
                 <thead>
                     <tr>
