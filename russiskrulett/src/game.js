@@ -16,7 +16,7 @@ export default function Game() {
     function loading() {
         const newBulletLocation = Math.floor(Math.random() * 6);
         setBulletLocation(newBulletLocation);
-        // console.log(newBulletLocation);
+        console.log(newBulletLocation);
         return newBulletLocation;
     }
 
