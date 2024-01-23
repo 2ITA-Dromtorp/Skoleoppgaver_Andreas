@@ -27,40 +27,6 @@
 .App-link {
   color: #61dafb;
 }
-input {
-  width: 20%;
-}
-
-.gun0 {
-  width: 200px;
-  transition: 1s;
-  transform: rotate(0deg);
-}
-.gun1 {
-  width: 200px;
-  transition: 1s;
-  transform: rotate(60deg);
-}
-.gun2 {
-  width: 200px;
-  transition: 1s;
-  transform: rotate(120deg);
-}
-.gun3 {
-  width: 200px;
-  transition: 1s;
-  transform: rotate(180deg);
-}
-.gun4 {
-  width: 200px;
-  transition: 1s;
-  transform: rotate(240deg);
-}
-.gun5 {
-  width: 200px;
-  transition: 1s;
-  transform: rotate(300deg);
-}
 
 @keyframes App-logo-spin {
   from {
