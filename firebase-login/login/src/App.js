@@ -10,8 +10,7 @@ function App() {
   // const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+
 
   // const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
   // const { Firstname, setFirstname } = useContext(FirstnameContext);
@@ -66,10 +65,10 @@ function App() {
   //     }
       
   // }, [lastName])
-}
-  const handleRegisterClick = (email, password) => {
+
+  const handleRegisterClick = () => {
     console.log("registrert");
-    if(email!=='') {
+    // if(email!=='') {
     //  if (email=="a" || password=="123") {
     //     console.log("registrert")
     //  }
@@ -131,6 +130,9 @@ function App() {
 
 </main>
   );
-}
+  }
+
+// }
+
 
 export default App;
