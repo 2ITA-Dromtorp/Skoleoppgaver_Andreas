@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { EmailContext } from './context';
 // import { useNavigate } from "react-router-dom";
 // import { IsLoggedInContext, FirstnameContext } from './context';
 
@@ -21,6 +22,7 @@ function App() {
       e.preventDefault();
       console.log(email, password);
       login();
+      console.log(EmailContext)
       // navigate("/");
   };
 
