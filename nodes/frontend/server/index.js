@@ -7,6 +7,8 @@ app.use(express.static('build'));
 app.use(express.json());
 app.use(cors());
 
+const port = process.env.PORT || 8080;
+
 const dbConfig = {
   user: 'root',
   password: 'root',
@@ -114,6 +116,9 @@ app.delete('/delete', async (req, res) => {
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
+  app.get("*", (req, res) => {
+    res.sendFile('build');
+  })
 });
 
 // Close the connection pool when the application is shutting down

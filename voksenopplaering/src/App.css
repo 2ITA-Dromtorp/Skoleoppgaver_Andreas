@@ -22,7 +22,7 @@ main {
   /* width: 100vw; */
   max-width: 1600px;
   margin: 0 auto;
-  height: 200vh;
+  height: 300vh;
   /* overflow-y: scroll; */
   background-color: #546672;
   /* background-color: #003153; */
@@ -223,7 +223,13 @@ header {
   height: 30%;
 }
 
-
+form {
+  margin: 0 auto;
+    width: 50vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
 .submitButton {
   width: 100%;

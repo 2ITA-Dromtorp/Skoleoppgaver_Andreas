@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EmailContext } from './context';
 // import { useNavigate } from "react-router-dom";
-// import { IsLoggedInContext, FirstnameContext } from './context';
+import { IsLoggedInContext } from './context'
 
 function App() {
 
@@ -13,8 +13,7 @@ function App() {
   const [password, setPassword] = useState('');
 
 
-  // const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
-  // const { Firstname, setFirstname } = useContext(FirstnameContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
 
 
 
@@ -23,6 +22,8 @@ function App() {
       console.log(email, password);
       login();
       console.log(EmailContext)
+      console.log(isLoggedIn)
+      console.log(IsLoggedInContext)
       // navigate("/");
   };
 
@@ -56,26 +57,25 @@ function App() {
       
   };
   
-  // useEffect(()=>{
-  //     console.log("MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-  //     if(lastName!=='') {
-  //         localStorage.setItem('email', email);
-  //         localStorage.setItem('password', password);
-  //         localStorage.setItem('firstname', firstName);
-  //         localStorage.setItem('lastname', lastName);
-  //         console.log(localStorage);
-  //     }
+  useEffect(()=>{
+      console.log("MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+      if(email!=='') {
+          localStorage.setItem('email', email);
+          localStorage.setItem('password', password);
+          localStorage.setItem('isLoggedIn', isLoggedIn);
+          console.log(localStorage);
+      }
       
-  // }, [lastName])
+  }, [email, password])
 
   const handleRegisterClick = () => {
     console.log("registrert");
-    // if(email!=='') {
-    //  if (email=="a" || password=="123") {
-    //     console.log("registrert")
-    //  }
+    if(email!=='') {
+     if (email=="a") {
+        console.log("registrert")
+     }
     }
-
+  }
   
   
 
@@ -134,7 +134,7 @@ function App() {
   );
   }
 
-// }
+
 
 
 export default App;

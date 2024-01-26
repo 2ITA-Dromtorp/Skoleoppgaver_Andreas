@@ -22,7 +22,7 @@ const PasswordProvider = ({ children }) => {
 
 const IsLoggedInContext = createContext({});
 const IsLoggedInProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
     return (
         <IsLoggedInContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
             {children}

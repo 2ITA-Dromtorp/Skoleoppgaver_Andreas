@@ -36,6 +36,7 @@ export default function Game() {
         console.log(newBulletLocation);
         return newBulletLocation;
 
+
     }
 
     function shooter(newBulletLocation) {
@@ -92,6 +93,9 @@ export default function Game() {
             <p>{bulletAmount}</p>
             <img className={gun} src={imgSRC.image} alt='spiller ukjent'/>
             <h2>{status}</h2>
+            <h1>Tabell</h1>
+            
         </div>
     )
 }
+
