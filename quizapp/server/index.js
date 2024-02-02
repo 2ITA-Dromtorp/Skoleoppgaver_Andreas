@@ -1,12 +1,10 @@
-// import './quiz.json'
-const PORT = 8000;
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 6969
+app.use(express.static("build"));
 
-function index(){
-    console.log("server is running")
-    console.log("hello from server");
-    console.log("hello from server");
-    console.log("hello from server");
-    console.log("hello from server");
-    
-    app.listen(PORT, () => console.log("Server started" + PORT))
-}
+console.log("server is running")
+console.log("hello from server");
+
+app.listen(port, () => console.log(`Server started on port ${port}`))
+
