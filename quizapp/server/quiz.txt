@@ -1,0 +1,101 @@
+{
+    "quiz": {
+        "questions": {
+            "question1":"Hva er navnet pa din gutt?",
+            "question2":"Hva mener du om gutten?",
+            "question3":"Hvorfor er du en gutt?",
+            "question4":"Hvome er gutten?",
+            "question5":"Hvorfor er gutten en gutt?",
+            "question6":"gutten er en gutt?"
+        },
+        "answers": {
+            "answer1":"Hvorfor er du en gutt?",
+            "answer2":"Hvorfor er du en gutt?",
+            "answer3":"Hvorfor er du en gutt?",
+            "answer4":"Hvorfor er du en gutt?",
+            "answer5":"Hvorfor er du en gutt?",
+            "answer6":"Hvorfor er du en gutt?"
+        },
+        "correct": {
+            "correct1": "Hvorfor er du en gutt?",
+            "correct2": "Hvorfor er du en gutt?",
+            "correct3": "Hvorfor er du en gutt?",
+            "correct4": "Hvorfor er du en gutt?",
+            "correct5": "Hvorfor er du en gutt?",
+            "correct6": "Hvorfor er du en gutt?"
+        },
+        "incorrect": {
+            "incorrect1": "Hvorfor er du en gutt?",
+            "incorrect2": "Hvorfor er du en gutt?",
+            "incorrect3": "Hvorfor er du en gutt?",
+            "incorrect4": "Hvorfor er du en gutt?",
+            "incorrect5": "Hvorfor er du en gutt?",
+            "incorrect6": "Hvorfor er du en gutt?"
+        },
+        "explanation": {
+            "explanation1": "Hvorfor er du en gutt?",
+            "explanation2": "Hvorfor er du en gutt?",
+            "explanation3": "Hvorfor er du en gutt?",
+            "explanation4": "Hvorfor er du en gutt?",
+            "explanation5": "Hvorfor er du en gutt?",
+            "explanation6": "Hvorfor er du en gutt?"
+        },
+        "hint": {
+            "hint1": "Hvorfor er du en gutt?",
+            "hint2": "Hvorfor er du en gutt?",
+            "hint3": "Hvorfor er du en gutt?",
+            "hint4": "Hvorfor er du en gutt?",
+            "hint5": "Hvorfor er du en gutt?",
+            "hint6": "Hvorfor er du en gutt?"
+        },
+        "solution": {
+            "solution1": "Hvorfor er du en gutt?",
+            "solution2": "Hvorfor er du en gutt?",
+            "solution3": "Hvorfor er du en gutt?",
+            "solution4": "Hvorfor er du en gutt?",
+            "solution5": "Hvorfor er du en gutt?",
+            "solution6": "Hvorfor er du en gutt?"
+        },
+        "image": {
+            "image1": "Hvorfor er du en gutt?",
+            "image2": "Hvorfor er du en gutt?",
+            "image3": "Hvorfor er du en gutt?",
+            "image4": "Hvorfor er du en gutt?",
+            "image5": "Hvorfor er du en gutt?",
+            "image6": "Hvorfor er du en gutt?"
+
+        },
+        "audio": {
+            "audio1": "Hvorfor er du en gutt?",
+            "audio2": "Hvorfor er du en gutt?",
+            "audio3": "Hvorfor er du en gutt?",
+            "audio4": "Hvorfor er du en gutt?",
+            "audio5": "Hvorfor er du en gutt?",
+            "audio6": "Hvorfor er du en gutt?"
+        },
+        "video": {
+            "video1": "Hvorfor er du en gutt?",
+            "video2": "Hvorfor er du en gutt?",
+            "video3": "Hvorfor er du en gutt?",
+            "video4": "Hvorfor er du en gutt?",
+            "video5": "Hvorfor er du en gutt?",
+            "video6": "Hvorfor er du en gutt?"
+        },
+        "link": {
+            "link1": "Hvorfor er du en gutt?",
+            "link2": "Hvorfor er du en gutt?",
+            "link3": "Hvorfor er du en gutt?",
+            "link4": "Hvorfor er du en gutt?",
+            "link5": "Hvorfor er du en gutt?",
+            "link6": "Hvorfor er du en gutt?"
+        },
+        "quiz": {
+            "quiz1": "Hvorfor er du en gutt?",
+            "quiz2": "Hvorfor er du en gutt?",
+            "quiz3": "Hvorfor er du en gutt?",
+            "quiz4": "Hvorfor er du en gutt?",
+            "quiz5": "Hvorfor er du en gutt?",
+            "quiz6": "Hvorfor er du en gutt?"
+        }
+        }
+    }

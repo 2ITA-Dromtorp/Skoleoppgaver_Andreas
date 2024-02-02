@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { EmailContext } from './context';
 // import { useNavigate } from "react-router-dom";
 import { IsLoggedInContext } from './context'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import './firebase.js'
+
+
 
 function App() {
 
@@ -14,10 +18,32 @@ function App() {
 
 
   const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
-
-
-
   const handleSubmit = (e) => {
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(userCredential.user)
+      console.log(userCredential.user)
+      console.log(userCredential.user)
+      console.log(userCredential.user)
+      console.log("Logget inn")
+      console.log("Logget inn")
+      console.log("Logget inn")
+      console.log("Logget inn")
+
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      
+      console.log("Error")
+    });
+
+
+
       e.preventDefault();
       console.log(email, password);
       login();
@@ -88,6 +114,7 @@ function App() {
 
   return (
     <main>
+    <div className='loginFormWrapper'>
     <div className='loginForm'>
         <form onSubmit={handleSubmit}>
             <div className='loginDiv'>
@@ -127,7 +154,7 @@ function App() {
             </div>
         </form>
     </div>
-
+    </div>
       
 
 </main>

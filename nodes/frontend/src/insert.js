@@ -34,7 +34,7 @@ export default function Insert() {
     
       console.log(dataToSend);
     
-      fetch('/faenhelvete', {
+      fetch('http://localhost:3001/faenhelvete', {
         method: 'POST',
         headers: {
           "content-type": "application/json"

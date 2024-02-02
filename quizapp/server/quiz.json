@@ -1,0 +1,22 @@
+{
+    "quiz": {
+    "questions":    {
+            "question1": "What is the capital of Canada?",
+            "question2": "What is the capital of Japan?",
+            "question3": "What is the capital of India?",
+            "question4": "What is the capital of Germany?"
+        },
+    "answersid": {
+            "question1": 1,
+            "question2": 2,
+            "question3": 3,
+            "question4": 4
+        },
+    "answertext": {
+            "question1": "Ottawa",
+            "question2": "Tokyo",
+            "question3": "New Delhi",
+            "question4": "Berlin"
+    }
+    }
+}
