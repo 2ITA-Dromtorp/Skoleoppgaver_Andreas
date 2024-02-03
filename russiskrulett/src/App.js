@@ -9,7 +9,7 @@ function App() {
 
   const [bulletAmount, setBulletAmount] = useState("");
 
-
+  
   return (
     <div className="App">
       <h1>Russisk rulett!</h1>
