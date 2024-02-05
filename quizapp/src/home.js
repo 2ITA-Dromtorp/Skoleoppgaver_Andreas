@@ -9,7 +9,7 @@ export default function Home() {
     }, []);
     const getCustomersData = async () => {
       await axios
-        .get("http://localhost:6969/select")
+        .get("/select")
         .then(response => {
           setCustomersData(response.data);
           console.log(response.data)
