@@ -14,6 +14,8 @@ function App() {
   let [questionNumString, setQuestionNumString] = useState(1);
   const [customersData, setCustomersData] = useState({});
   const [renders, setRenders] = useState(null);
+  const [test, setTest] = useState("");
+  const [tester, setTester] = useState(" ");
   useEffect(() => {
       getCustomersData();
   }, []);
@@ -30,8 +32,22 @@ function App() {
   
   const button1 = () => {
   setAnswerNum(1)
+  setTest(" red")
+  getTester();
   // handleSubmit()
 };
+
+const getTester = async () => {
+  await axios
+    .get("/red")
+    .then(response => {
+      setTester(response.data);
+      console.log(response.data)
+    })
+    .catch(error => console.log(error));
+};
+
+
 const button2 = () => {
   setAnswerNum(2)
   // handleSubmit()
@@ -83,11 +99,11 @@ useEffect(()=>{
         <div className='quizForm'>
           <form onSubmit={handleSubmit}>
           <h1>Spørsmål {questionNum}:</h1>
-          {customersData.quiz &&  <h2>{customersData.quiz.questions.question1}</h2> }
-          {customersData.quiz && <button className='submitButton' onClick={button1}>{customersData.quiz.answertext.question1}</button>}
-          {customersData.quiz && <button className='submitButton' onClick={button2}>{customersData.quiz.answertext.question2}</button>}
-          {customersData.quiz && <button className='submitButton' onClick={button3}>{customersData.quiz.answertext.question3}</button>}
-          {customersData.quiz && <button className='submitButton' onClick={button4}>{customersData.quiz.answertext.question4}</button>}
+          {customersData.quiz &&  <h2>{customersData.quiz.questions[`question${questionNum}`]}</h2> }
+          {customersData.quiz && <button className={['submitButton' + tester]} onClick={button1}>{customersData.quiz.answertext[`question${questionNum}`]}</button>}
+          {customersData.quiz && <button className={['submitButton' + tester]} onClick={button2}>{customersData.quiz.answertext[`question${questionNum}`]}</button>}
+          {customersData.quiz && <button className={['submitButton' + tester]} onClick={button3}>{customersData.quiz.answertext[`question${questionNum}`]}</button>}
+          {customersData.quiz && <button className={['submitButton' + tester]} onClick={button4}>{customersData.quiz.answertext.question4}</button>}
           <h2>Valgt svar: {answerNum}</h2>
           </form>
         </div>

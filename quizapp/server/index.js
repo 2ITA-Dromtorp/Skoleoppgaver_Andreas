@@ -20,6 +20,15 @@ app.get('/select', async (req, res) => {
     }
 });
 
+app.get('/red', async (req, res) => {
+    try {
+        res.send(" red");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 
 
