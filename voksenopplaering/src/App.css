@@ -223,13 +223,7 @@ header {
   height: 30%;
 }
 
-form {
-  margin: 0 auto;
-    width: 50vw;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
+
 
 .submitButton {
   width: 100%;

@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.karaokeWrapper {
+  width: 100vw;
+  height: 200vh;
+  background-color: gray;
   display: flex;
   flex-direction: column;
+}
+
+.karaokeHeader {
+  width: 100%;
+  height: 20%;
+  background-color: blue;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.karaokeSearch {
+  width: 80%;
+  height: 50%;
+  background-color: red;
+  /* border-radius: 30px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.songWrapper {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-top: 2vh;
+  height: 160%;
+  width: 100%;
+  background-color: yellow;
 }
+
+.karaokeSongs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: fit-content;
+  width: 100%;
+  /* padding-top: 3vh; */
+  background-color: green;
+}
+
+.karaokeCard {
+
+  /* justify-content: center; */
+  /* align-items: center; */
+  height: 45vh;
+  width: 70%;
+  margin-bottom: 1vh;
+  background-color: red;
+}
+

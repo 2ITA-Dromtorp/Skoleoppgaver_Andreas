@@ -41,14 +41,6 @@
   position: absolute;
 }
 
-#Opener {
- /* background-color: blue; */
-}
-
-#Closer {
-  /* background-color: red; */
-}
-
 .hidden {
   display: none;
 }

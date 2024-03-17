@@ -7,6 +7,6 @@ export default function Profile() {
     console.log(profile);
 
     return (
-        <h1> Profilen til  </h1>
+        <h1> Profilen til {profile} </h1>
     )
 }
