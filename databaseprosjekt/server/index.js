@@ -9,8 +9,9 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 app.post("/test", (req, res) => {
-  text = req.body.text
-    let myArray = text.split("");
+  password = req.body.password
+  username = req.body.username
+    let myArray = password.split("");
 
   
     const replacementMap = {
@@ -94,5 +95,8 @@ app.post("/test", (req, res) => {
         return; // Stop encryption process if a space is found
       }
     }
-    res.send(myArray.join(""));
+    let salt = username.length * password.length
+    // myArray = myArray.concat(salt)
+    let finishedPassword = salt + myArray.join("");
+    res.send(finishedPassword);
 })

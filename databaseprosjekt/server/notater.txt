@@ -1,1 +1,3 @@
 Gjør at hashliste er knyttet til brukernavn i databse.
+
+Salt kan være username.length * passord.length? Kanskje gjøre tallene til bokstaver??
