@@ -79,12 +79,12 @@ app.post("/test", (req, res) => {
       '?': 'aJjcvJ3srkb5',
       '!': 'bKlLd1f'
     };
-  
+    console.log(replacementMap)
     for (let i = 0; i < myArray.length; i++) {
       if (myArray[i] !== " ") {
         const replacement = replacementMap[myArray[i]];
         if (replacement) {
-          myArray[i] = replacement;
+          myArray[i] = replacement + (myArray[i + 1]);
         } else {
           res.send("DO NOT USE SPECIAL CHARACTERS EXCEPT FOR ! AND ?. ONLY USE LETTERS IN THE ENGLISH ALPHABET")
           myArray = ""

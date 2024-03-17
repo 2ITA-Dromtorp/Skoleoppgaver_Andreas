@@ -24,8 +24,18 @@ function App() {
     setUnencryptedPassword(text)
     axios.post('/test', {"text":text})
       .then(response => {
+        if (response.data === "Do not include spaces") {
+          alert(response.data);
+          setEncryptedPassword("")
+          setUnencryptedPassword("")
+        } else if (response.data === "DO NOT USE SPECIAL CHARACTERS EXCEPT FOR ! AND ?. ONLY USE LETTERS IN THE ENGLISH ALPHABET") {
+          alert(response.data);
+          setEncryptedPassword("")
+          setUnencryptedPassword("")
+        } else {
           setEncryptedPassword(response.data)
           console.log(encryptedPassword)
+        }
       })
       .catch(error => {
         console.error('Error sending the POST request:', error);

@@ -1,0 +1,1 @@
+Gjør at hashliste er knyttet til brukernavn i databse.
