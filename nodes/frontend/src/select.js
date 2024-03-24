@@ -10,7 +10,7 @@ export default function Select() {
     }, []);
     const getCustomersData = () => {
         axios
-            .get("http://localhost:3001/")
+            .get("http://localhost:8080/")
             .then(response => { setCustomersData(response.data) })
 
             .catch(error => console.log(error));

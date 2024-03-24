@@ -13,20 +13,22 @@ app.post("/test", (req, res) => {
   password = req.body.password
   username = req.body.username
     let myArray = password.split("");
-
-    console.log(replacementMap)
-
+    let test = 1
+    // console.log(replacementMap)
+    let number = test << 5 - test
+    console.log(number)
     console.log(myArray[3])
     // console.log(replacementMap)
     for (let i = 0; i < myArray.length; i++) {
       if (myArray[i] !== " ") {
         const replacement = replacementMap.replacementMap[myArray[i]];
+
+        // console.log(String.fromCharCode(superstring))
         if (replacement) {
-          myArray[i] = replacement + (myArray[i + 1]);
-        } else {
-          res.send("DO NOT USE SPECIAL CHARACTERS EXCEPT FOR ! AND ?. ONLY USE LETTERS IN THE ENGLISH ALPHABET")
-          myArray = ""
-        }
+          myArray[i] = myArray[i].charCodeAt(0).toString(2);
+
+        } 
+        
       } else {
         res.send("Do not include spaces");
         return; // Stop encryption process if a space is found
@@ -34,6 +36,20 @@ app.post("/test", (req, res) => {
     }
     // let salt = Math.round(username.length + password.length / 4)
     // myArray = myArray.concat(salt)
-    let finishedPassword = myArray.join("");
+    let min = 33
+    let max = 126
+    let num = Math.floor(Math.random() * (max - min + 1) ) + min;
+    console.log(num)
+    let salt = String.fromCharCode(Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min, Math.floor(Math.random() * (max - min + 1) ) + min ) 
+    console.log(salt)
+    let finishedPassword = salt + myArray;
+    let final = myArray;
+    // console.log(final)
+    let finnum = final << 3
+    console.log(finnum)
+    // let superstring = finishedPassword.charCodeAt(0).toString(2);
+    // console.log(superstring)
+    console.log(finishedPassword)
     res.send(finishedPassword);
 })
+

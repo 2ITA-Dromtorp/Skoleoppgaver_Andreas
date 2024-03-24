@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
-const PORT = 3001;
+// const PORT = 3001;
 const mysql = require('mysql2/promise'); // Use promise-based MySQL
-// const cors = require('cors');
+const cors = require('cors');
 app.use(express.static('build'));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 const port = process.env.PORT || 8080;
-
+// app.listen(port, () => console.log(`Server started on port ${port}`));
 const dbConfig = {
   user: 'root',
   password: 'root',
@@ -114,8 +114,8 @@ app.delete('/delete', async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
   app.get("*", (req, res) => {
     res.sendFile('build');
   })
