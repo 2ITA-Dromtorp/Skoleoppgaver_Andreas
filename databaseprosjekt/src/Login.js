@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import { IsLoggedInContext, FirstnameContext } from './context.js';
+import { useContext } from 'react';
 function Login(){
+  const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
+  const { Firstname, setFirstname } = useContext(FirstnameContext);
 
   // const serverTest = () => {
   //   axios.get('http://localhost:4000/test')

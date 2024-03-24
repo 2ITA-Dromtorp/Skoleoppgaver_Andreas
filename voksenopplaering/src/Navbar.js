@@ -9,7 +9,7 @@ function Navbar() {
     const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
 
     function logout() { 
-        setIsLoggedIn(false);
+        setIsLoggedIn(true);
     }
 
     return (
