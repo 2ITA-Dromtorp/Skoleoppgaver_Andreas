@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());    
 const replacementMap = require("./replacement.json")  
 console.log(replacementMap)
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server started on port ${port}`));
 console.log(alphabet.alphabet[0])
 app.post("/test", (req, res) => {
