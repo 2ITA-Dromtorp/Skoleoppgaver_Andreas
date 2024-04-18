@@ -8,17 +8,13 @@ function NavBar(){
     const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
     const { Firstname, setFirstname } = useContext(FirstnameContext);
 
+    setIsLoggedIn(sessionStorage.getItem("isLoggedIn"));
 
-    function loginout(){
-        if (isLoggedIn === false){
-            setIsLoggedIn(true);
-            setFirstname("Andreas");
-        }
-        else{
-            setIsLoggedIn(false);
-            setFirstname("");
-        }
+    function logout(){
+        setIsLoggedIn(false);
+        sessionStorage.clear();
         console.log(isLoggedIn)
+        console.log(sessionStorage)
     }
 
     return (
@@ -40,9 +36,9 @@ function NavBar(){
         
           </Link> 
           <div className='navbuttonDiv'>
-          <div className='navbuttonsubDiv'><button className='navButton' onClick={loginout}>Min konto</button></div>
-          <div className='navbuttonsubDiv'><Link to={'/equipmentTable'}><button className='navButton'>Elev</button></Link></div>
-          {isLoggedIn?<Link className='navbuttonsubDiv' to={'/'}><button className='navButton'>Logg ut</button></Link>:<Link className='navbuttonsubDiv' to={'/login'}><button className='navButton'>Logg inn/Registrer deg</button></Link>} 
+          <div className='navbuttonsubDiv'><Link to={'/studentTable'}><button className='navButton'>Elever</button></Link></div>
+          <div className='navbuttonsubDiv'><Link to={'/equipmentTable'}><button className='navButton'>Utstyr</button></Link></div>
+          {isLoggedIn?<Link className='navbuttonsubDiv' to={'/'}><button className='navButton' onClick={logout}>Logg ut</button></Link>:<Link className='navbuttonsubDiv' to={'/login'}><button className='navButton'>Logg inn/Registrer deg</button></Link>} 
           </div>
         </nav>
         </header>

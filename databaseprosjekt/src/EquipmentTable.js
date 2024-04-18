@@ -1,30 +1,33 @@
-import customersData from './test.json';
-
+// import customersData from './test.json';
+import axios from 'axios';
+import { useState,useEffect } from 'react';
 export default function EquipmentTable() {
+    const [customersData, setCustomersData] = useState([]);
+    useEffect(() => {
+        axios.get('/getEquipment').then((response) => {
+            console.log(response.data)
+            setCustomersData(response.data)
+        })
+    
+    }, [onloadstart])
 
     return (
         <table className='styled_table'>
         <thead>
             <tr>
-                <th>ElevID</th>
-                <th>Fornavn</th>
-                <th>Etternavn</th>
-                <th>DatamaskinID</th>
-                <th>Hobby</th>
-                <th>Klasse</th>
-                <th>Kjonn</th>
+                <th>UtstyrsID</th>
+                <th>Kategori</th>
+                <th>Modell</th>
+                <th>Pris</th>
             </tr>
         </thead>
         <tbody>
             {customersData.map((customer) => (
-            <tr key={customer.ElevID}>
-                <td>{customer.ElevID}</td>
-                <td>{customer.Fornavn}</td>
-                <td>{customer.Etternavn}</td>
-                <td>{customer.DatamaskinID}</td>
-                <td>{customer.Hobby}</td>
-                <td>{customer.Klasse}</td>
-                <td>{customer.Kjonn}</td>
+            <tr key={customer.utstyrsID}>
+                <td>{customer.utstyrsID}</td>
+                <td>{customer.Kategori}</td>
+                <td>{customer.Modell}</td>
+                <td>{customer.Pris}</td>
             </tr>
             ))}
         </tbody>

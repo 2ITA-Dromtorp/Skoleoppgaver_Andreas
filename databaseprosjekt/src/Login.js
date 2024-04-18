@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { IsLoggedInContext, FirstnameContext } from './context.js';
 import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
 function Login(){
   const { isLoggedIn, setIsLoggedIn } = useContext(IsLoggedInContext);
   const { Firstname, setFirstname } = useContext(FirstnameContext);
@@ -19,13 +20,12 @@ function Login(){
 
 
   function encrypt(event) {
+
     event.preventDefault()
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
-    console.log(username)
-    console.log(password)
     setUsername(username)
-    console.log("fesdio")
+    setFirstname(username);
     setUnencryptedPassword(password)
     axios.post('/test', {"password":password, "username":username})
       .then(response => {
@@ -40,21 +40,26 @@ function Login(){
           setUnencryptedPassword("")
           setUsername("")
         } else {
+
+
           setEncryptedPassword(response.data)
-
-
+          setIsLoggedIn(true);
+          sessionStorage.setItem("username", username);
+          sessionStorage.setItem("password", password);
+          sessionStorage.setItem("isLoggedIn", true)
+          console.log(sessionStorage)
+          
           // setUsername(response.data.username)
         }
       })
       .catch(error => {
         console.error('Error sending the POST request:', error);
       });
-      
+
     }
 
     // document.getElementById("unencryptedPassword").innerHTML = "U-kryptert passord: " + text;
     // document.getElementById("encryptedPassword").innerHTML = "Kryptert passord: " + myArray.join("");
-  
   
 
   // document.querySelector('.formDiv').addEventListener('submit', encrypt);
@@ -63,6 +68,7 @@ function Login(){
   return (
     <div>
 
+    {isLoggedIn ? <Navigate to="/"/> : null}
 
     <form className="formDiv" onSubmit={encrypt}>
         <label className="headerText">Login</label>
