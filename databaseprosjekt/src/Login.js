@@ -17,7 +17,7 @@ function Login(){
   const [username, setUsername] = useState("")
   const [encryptedPassword, setEncryptedPassword] = useState("")
   const [unencryptedPassword, setUnencryptedPassword] = useState("")
-
+  const [status, setStatus] = useState("Login")
 
   function encrypt(event) {
 
@@ -27,14 +27,9 @@ function Login(){
     setUsername(username)
     setFirstname(username);
     setUnencryptedPassword(password)
-    axios.post('/test', {"password":password, "username":username})
+    axios.post('/login', {"password":password, "username":username})
       .then(response => {
-        if (response.data === "Do not include spaces") {
-          alert(response.data);
-          setEncryptedPassword("")
-          setUnencryptedPassword("")
-          setUsername("")
-        } else if (response.data === "DO NOT USE SPECIAL CHARACTERS EXCEPT FOR ! AND ?. ONLY USE LETTERS IN THE ENGLISH ALPHABET") {
+        if (response.data[0] === "Feil brukernavn eller passord") {
           alert(response.data);
           setEncryptedPassword("")
           setUnencryptedPassword("")
@@ -42,12 +37,15 @@ function Login(){
         } else {
 
 
-          setEncryptedPassword(response.data)
-          setIsLoggedIn(true);
+          console.log("response.data: " + response.data)
+
+          setStatus("Logget inn, omdirrigerer til hovedsiden");
           sessionStorage.setItem("username", username);
           sessionStorage.setItem("password", password);
           sessionStorage.setItem("isLoggedIn", true)
+          sessionStorage.setItem("menneskeID", response.data)
           console.log(sessionStorage)
+          setIsLoggedIn(true);
           
           // setUsername(response.data.username)
         }
@@ -71,14 +69,11 @@ function Login(){
     {isLoggedIn ? <Navigate to="/"/> : null}
 
     <form className="formDiv" onSubmit={encrypt}>
-        <label className="headerText">Login</label>
+        <label className="headerText">{status}</label>
         <label>Username:</label>
         <input type="text" className='passwordInput' id='username'/>
         <label>Password:</label>
         <input type="password" className="passwordInput" id='password'/>
-        <p className='passWord' id='username'>Username: {username}</p>
-        <p className="passWord" id="unencryptedPassword">Unencrypted password: {unencryptedPassword}</p>
-        <p className="passWord" id="encryptedPassword">Encrypted password: {encryptedPassword}</p>
         <input type="submit" value="Login" className='loginButton'/>
     </form>
 

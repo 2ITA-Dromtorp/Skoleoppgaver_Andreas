@@ -11,6 +11,19 @@ export default function EquipmentTable() {
     
     }, [onloadstart])
 
+
+    function laan(e) {
+        console.log(e.target.id)
+        let menneskeID = sessionStorage.getItem("menneskeID")
+        let bookedEquipment = e.target.id
+
+        axios.post('/laan', {"menneskeID":menneskeID, "bookedEquipment":bookedEquipment})
+        .then((response) => {
+            console.log(response.data)
+        })
+        // (e) => window.location.href = `/order/${e.target.id}`
+    }
+
     return (
         <table className='styled_table'>
         <thead>
@@ -19,6 +32,7 @@ export default function EquipmentTable() {
                 <th>Kategori</th>
                 <th>Modell</th>
                 <th>Pris</th>
+                <th>Utlånt til</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +42,8 @@ export default function EquipmentTable() {
                 <td>{customer.Kategori}</td>
                 <td>{customer.Modell}</td>
                 <td>{customer.Pris}</td>
+                <td>{customer.menneskeID}</td>
+                <button id={customer.utstyrsID} onClick={(e) => laan(e)}>Bestill</button>
             </tr>
             ))}
         </tbody>
