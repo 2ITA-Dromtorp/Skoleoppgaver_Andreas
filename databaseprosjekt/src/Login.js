@@ -43,7 +43,8 @@ function Login(){
           sessionStorage.setItem("username", username);
           sessionStorage.setItem("password", password);
           sessionStorage.setItem("isLoggedIn", true)
-          sessionStorage.setItem("menneskeID", response.data)
+          sessionStorage.setItem("menneskeID", response.data.menneskeID)
+          sessionStorage.setItem("rolleID", response.data.rolleID)
           console.log(sessionStorage)
           setIsLoggedIn(true);
           
@@ -56,6 +57,14 @@ function Login(){
 
     }
 
+
+  // function encrypt (event) {
+  //   let password = document.querySelector("#password").value;
+  //   axios.post('/test', {"password":password})
+  //   .then(response => {
+  //     console.log(response.data)
+  //   })
+  // }
     // document.getElementById("unencryptedPassword").innerHTML = "U-kryptert passord: " + text;
     // document.getElementById("encryptedPassword").innerHTML = "Kryptert passord: " + myArray.join("");
   

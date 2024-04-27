@@ -3,6 +3,12 @@ body {
   background-color: #4E616C;
 }
 
+button {
+  color: black;
+  border: none;
+  background-color: transparent;
+}
+
 
 .formDiv {
   /* background: red; */
@@ -137,8 +143,8 @@ nav a {
 
 .logo {
   width: 50%;
+  height: 100%;
   position: relative;
-  bottom: -19%;
   right: -1%;
 }
 
@@ -148,7 +154,7 @@ nav a {
   background-color: transparent;
   border: none;
   transition: 0.3s;
-  font-size: 1.5vw;
+  font-size: 1em;
 }
 
 .navButton:hover {

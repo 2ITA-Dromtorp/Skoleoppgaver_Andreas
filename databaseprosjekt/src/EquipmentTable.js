@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 export default function EquipmentTable() {
     const [customersData, setCustomersData] = useState([]);
+    // const [isBooked, setIsBooked] = useState(false);
+
     useEffect(() => {
         axios.get('/getEquipment').then((response) => {
             console.log(response.data)
@@ -20,9 +22,26 @@ export default function EquipmentTable() {
         axios.post('/laan', {"menneskeID":menneskeID, "bookedEquipment":bookedEquipment})
         .then((response) => {
             console.log(response.data)
+            window.location.reload();
+            // setIsBooked(true)
+            
         })
         // (e) => window.location.href = `/order/${e.target.id}`
     }
+
+    function avbestill(e) {
+        console.log(e.target.id)
+        let deleteID = 0
+        let bookedEquipment = e.target.id
+
+        axios.post('/delete', {"deleteID":deleteID, "bookedEquipment":bookedEquipment})
+        .then((response) => {
+            console.log(response.data)
+            window.location.reload();
+            // setIsBooked(false)
+        })
+        // (e) => window.location.href = `/order/${e.target.id}`
+    }    
 
     return (
         <table className='styled_table'>
@@ -31,7 +50,6 @@ export default function EquipmentTable() {
                 <th>UtstyrsID</th>
                 <th>Kategori</th>
                 <th>Modell</th>
-                <th>Pris</th>
                 <th>Utlånt til</th>
             </tr>
         </thead>
@@ -41,9 +59,10 @@ export default function EquipmentTable() {
                 <td>{customer.utstyrsID}</td>
                 <td>{customer.Kategori}</td>
                 <td>{customer.Modell}</td>
-                <td>{customer.Pris}</td>
                 <td>{customer.menneskeID}</td>
-                <button id={customer.utstyrsID} onClick={(e) => laan(e)}>Bestill</button>
+                {customer.menneskeID > 0 ? <button id={customer.utstyrsID} onClick={(e) => avbestill(e)}>Avbestill</button> : <button id={customer.utstyrsID} onClick={(e) => laan(e)}>Bestill</button>}
+                
+
             </tr>
             ))}
         </tbody>
