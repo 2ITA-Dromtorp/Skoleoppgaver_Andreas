@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow-x: hidden;
   background-color: #4E616C;
 }
 
@@ -39,6 +40,45 @@ button {
   font-size: 1em;
   line-break: auto;
   white-space-collapse: 1px;
+}
+
+.homePageButtons {
+  width: 100%;
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh auto;
+
+}
+
+.homePageButtons a {
+  width: 100%;
+  height: 10vh;
+  /* font-size: 1.5em; */
+  margin: 5% auto;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+/* .homePageButtons a:hover {
+  background-color: #003153;
+  color: white;
+} */
+
+.homePageButtons button {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.homePageButtons button:hover {
+  background-color: #003153;
+  color: white;
 }
 
 /* nav {
@@ -138,7 +178,8 @@ nav a {
   width: 60%;
   height: 100%;
   display: flex;
-  /* background-color: red; */
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .logo {
@@ -173,6 +214,7 @@ nav a {
 
 .navbuttonsubDiv {
   width: 33.33333%;
+  height: 100%;
 }
 
 

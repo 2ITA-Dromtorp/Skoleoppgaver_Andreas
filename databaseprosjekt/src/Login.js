@@ -19,6 +19,10 @@ function Login(){
   const [unencryptedPassword, setUnencryptedPassword] = useState("")
   const [status, setStatus] = useState("Login")
 
+  if (sessionStorage.getItem("isLoggedIn") === "true") {
+    return <Navigate to="/" />
+  }
+
   function encrypt(event) {
 
     event.preventDefault()
@@ -29,13 +33,8 @@ function Login(){
     setUnencryptedPassword(password)
     axios.post('/login', {"password":password, "username":username})
       .then(response => {
-        if (response.data[0] === "Feil brukernavn eller passord") {
-          alert(response.data);
-          setEncryptedPassword("")
-          setUnencryptedPassword("")
-          setUsername("")
-        } else {
-
+        console.log(response.data)
+        if (response.data != "Feil brukernavn eller passord") {
 
           console.log("response.data: " + response.data)
 
@@ -48,6 +47,14 @@ function Login(){
           console.log(sessionStorage)
           setIsLoggedIn(true);
           
+        } else {
+          alert(response.data);
+          setEncryptedPassword("")
+          setUnencryptedPassword("")
+          setUsername("")
+          sessionStorage.clear();
+          setIsLoggedIn(false);
+
           // setUsername(response.data.username)
         }
       })

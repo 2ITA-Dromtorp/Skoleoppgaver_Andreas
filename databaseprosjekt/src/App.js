@@ -5,6 +5,7 @@ import Login from './Login';
 import EquipmentTable from './EquipmentTable';
 import StudentTable from './StudentTable';
 import Register from './Register';
+import Foresporseller from './Foresporseller';
 
 function App() {
     return(
@@ -15,6 +16,7 @@ function App() {
             <Route path="/equipmentTable" element={<EquipmentTable />} />
             <Route path="/studentTable" element={<StudentTable />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/Foresporseller" element={<Foresporseller />} />
         </Routes>
 
     )

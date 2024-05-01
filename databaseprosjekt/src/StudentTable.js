@@ -3,6 +3,10 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 export default function StudentTable() {
     const [customersData, setCustomersData] = useState([]);
+
+    if (sessionStorage.getItem("menneskeID") == null) {
+        window.location.href = "/login"
+    }
     useEffect(() => {
         axios.get('/getStudents').then((response) => {
             console.log(response.data)

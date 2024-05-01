@@ -5,6 +5,9 @@ export default function EquipmentTable() {
     const [customersData, setCustomersData] = useState([]);
     // const [isBooked, setIsBooked] = useState(false);
 
+    if (sessionStorage.getItem("menneskeID") == null) {
+        window.location.href = "/login"
+    }
     useEffect(() => {
         axios.get('/getEquipment').then((response) => {
             console.log(response.data)
@@ -18,8 +21,10 @@ export default function EquipmentTable() {
         console.log(e.target.id)
         let menneskeID = sessionStorage.getItem("menneskeID")
         let bookedEquipment = e.target.id
+        let utlaaner = sessionStorage.getItem("username")
 
-        axios.post('/laan', {"menneskeID":menneskeID, "bookedEquipment":bookedEquipment})
+        console.log(menneskeID, bookedEquipment, utlaaner)
+        axios.post('/laan', {"menneskeID":menneskeID, "bookedEquipment":bookedEquipment, "utlaaner":utlaaner})
         .then((response) => {
             console.log(response.data)
             window.location.reload();
@@ -59,7 +64,7 @@ export default function EquipmentTable() {
                 <td>{customer.utstyrsID}</td>
                 <td>{customer.Kategori}</td>
                 <td>{customer.Modell}</td>
-                <td>{customer.menneskeID}</td>
+                <td>{customer.laaner}</td>
                 {customer.menneskeID > 0 ? <button id={customer.utstyrsID} onClick={(e) => avbestill(e)}>Avbestill</button> : <button id={customer.utstyrsID} onClick={(e) => laan(e)}>Bestill</button>}
                 
 

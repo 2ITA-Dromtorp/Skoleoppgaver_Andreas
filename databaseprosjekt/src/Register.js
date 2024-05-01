@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Register() {
-
+    if (sessionStorage.getItem("rolleID") != 3) {
+        window.location.href = "http://localhost:3000/";
+    }
     function encrypt(e) {
         e.preventDefault();
         let fornavn = document.getElementById('fornavn').value;
@@ -35,7 +37,7 @@ function Register() {
         }})
     }
 
-    if (sessionStorage.getItem("isLoggedIn") == 1) {
+    if (sessionStorage.getItem("rolleID") != 3) {
         return (
             <h1>Du har ikke tilgang til denne siden.</h1>
         )

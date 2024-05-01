@@ -36,8 +36,6 @@ function NavBar(){
         
           </Link> 
           <div className='navbuttonDiv'>
-          <div className='navbuttonsubDiv'><Link to={'/studentTable'}><button className='navButton'>Elever</button></Link></div>
-          <div className='navbuttonsubDiv'><Link to={'/equipmentTable'}><button className='navButton'>Utstyr</button></Link></div>
           {isLoggedIn?<Link className='navbuttonsubDiv' to={'/'}><button className='navButton' onClick={logout}>Logg ut</button></Link>:<Link className='navbuttonsubDiv' to={'/login'}><button className='navButton'>Logg inn/Registrer deg</button></Link>} 
           </div>
         </nav>
