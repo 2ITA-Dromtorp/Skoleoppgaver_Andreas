@@ -31,21 +31,20 @@ export default function EquipmentTable() {
             // setIsBooked(true)
             
         })
-        // (e) => window.location.href = `/order/${e.target.id}`
     }
 
-    function avbestill(e) {
+    function lever(e) {
         console.log(e.target.id)
-        let deleteID = 0
+        let menneskeID = sessionStorage.getItem("menneskeID")
         let bookedEquipment = e.target.id
 
-        axios.post('/delete', {"deleteID":deleteID, "bookedEquipment":bookedEquipment})
+        axios.post('/innlevering', {"menneskeID":menneskeID, "bookedEquipment":bookedEquipment})
         .then((response) => {
             console.log(response.data)
             window.location.reload();
             // setIsBooked(false)
         })
-        // (e) => window.location.href = `/order/${e.target.id}`
+
     }    
 
     return (
@@ -65,9 +64,7 @@ export default function EquipmentTable() {
                 <td>{customer.Kategori}</td>
                 <td>{customer.Modell}</td>
                 <td>{customer.laaner}</td>
-                {customer.menneskeID > 0 ? <button id={customer.utstyrsID} onClick={(e) => avbestill(e)}>Avbestill</button> : <button id={customer.utstyrsID} onClick={(e) => laan(e)}>Bestill</button>}
-                
-
+                {customer.menneskeID > 0 ? <button id={customer.utstyrsID} onClick={(e) => lever(e)}>Avbestill</button> : <button id={customer.utstyrsID} onClick={(e) => laan(e)}>Bestill</button>}
             </tr>
             ))}
         </tbody>

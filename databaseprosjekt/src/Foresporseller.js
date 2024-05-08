@@ -1,8 +1,10 @@
 // import customersData from './test.json';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 export default function Foresporseller() {
     const [customersData, setCustomersData] = useState([]);
+    const navigate = useNavigate();
     // const [isBooked, setIsBooked] = useState(false);
 
     if (sessionStorage.getItem("menneskeID") == null) {
@@ -39,13 +41,8 @@ export default function Foresporseller() {
         console.log(e.target.id)
         let username = sessionStorage.getItem("username")
         let password = sessionStorage.getItem("password")
-        console.log("UtstyrID: ",e.target.utstyrID)
-        console.log("ElevID: ",e.target.elevID)
         let acceptedRequest = e.target.id
-        let utstyrID = e.target.utstyrID
-        let elevID = e.target.elevID
-        console.log("ELEVID: ",elevID)
-        axios.post('/approveReq', {"username":username, "password":password, "acceptedRequest":acceptedRequest, "utstyrstype":utstyrID, "elevID":elevID})
+        axios.post('/approveReq', {"username":username, "password":password, "acceptedRequest":acceptedRequest})
         .then((response) => {
             console.log(response.data)
             window.location.reload();
@@ -88,15 +85,17 @@ export default function Foresporseller() {
                 <td>{customer.elevID}</td>
                 <td>{customer.Dato}</td>
                 <td>{customer.Status}</td>
-                {customer.Status === "Venter" ? 
+                {sessionStorage.getItem("rolleID") == 1 ?  null :
+                customer.Status === "Venter" ? 
                 <div><button onClick={(e) => approveReq(e)} id={customer.utlanID} elevID={customer.elevID} utstyrID={customer.utstyrID} className='tableButton'>Godkjenn</button><button id={customer.utlanID} className='tableButton'>Avslå</button></div> : 
                 customer.Status === "Godkjent" ? 
-                <button className='tableButton'>Lever inn</button> :
+                null :
                 customer.Status === "Levert" ?
-                <></> :
+                null :
                 <p>Kan ikke hente status. Kontakt IT.</p>
+
+
 }
-                
 
             </tr>
             ))}

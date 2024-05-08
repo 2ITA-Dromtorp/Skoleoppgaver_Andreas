@@ -10,9 +10,8 @@ app.use(cors());
 var fs = require('fs-sync');
 const mysql = require('mysql2/promise'); // Use promise-based MySQL
 const replacementMap = require("./replacement.json");
-const {
-  register
-} = require("module");
+const { register } = require("module");
+const { selectClasses } = require("@mui/material");
 console.log(replacementMap)
 const port = process.env.PORT || 8081;
 app.listen(port, () => console.log(`Server started on port ${port}`));
@@ -178,17 +177,17 @@ app.post("/approveReq", async (req, res) => {
 const username = req.body.username;
 const password = req.body.password;
 const acceptedRequest = req.body.acceptedRequest
-const utstyrstype = req.body.utstyrstype
 const elevID = req.body.elevID
 console.log(req.body)
 console.log("TEST",elevID)
-let saltQuery = 'SELECT salt FROM elev WHERE brukernavn = ?';
+let saltQuery = 'SELECT salt, Fornavn, MenneskeID FROM elev WHERE brukernavn = ?';
 let saltValues = [req.body.username];
 console.log('Executing query:', saltQuery, saltValues);
 let [saltResult] = await req.dbConnection.query(saltQuery, saltValues);
 console.log('Salt retrieved:', saltResult);
 let salt = saltResult[0].salt
-
+let fornavn = saltResult[0].Fornavn
+let menneskeID = saltResult[0].MenneskeID
 const finalHashedPassword = await hashPassword(password, salt)
 
 const passCheckQuery = 'SELECT rolleID FROM elev WHERE brukernavn = ? AND passord = ?';
@@ -205,14 +204,18 @@ if (passCheckResult[0].rolleID == 1) {
   let [acceptResult] = await req.dbConnection.query(acceptQuery, acceptValues);
   console.log('Result:', acceptResult);
   if (acceptResult) {
-
-    const nameCheckQuery = 'SELECT Fornavn FROM elev WHERE menneskeID = ?';
-    const nameCheckValues = [elevID];
-    const [nameCheckResult] = await req.dbConnection.query(nameCheckQuery, nameCheckValues);
-    console.log(nameCheckResult)
-
-    // const updateQuery = 'UPDATE utstyr SET menneskeID = ?, laaner = ? WHERE utstyrsID = ?';
-    // const updateValues = [elevID, nameCheckResult, utstyrstype];
+    const selectType = 'SELECT utstyrstype FROM utlan WHERE utlanID = ?';
+    const selectValues = [acceptedRequest];
+    const [utstyrstype] = await req.dbConnection.query(selectType, selectValues);
+    console.log("Utstyrstype [0] og ikke ",utstyrstype[0].utstyrstype)
+    console.log(utstyrstype)
+    let utstyr = utstyrstype[0].utstyrstype
+    const updateQuery = 'UPDATE utstyr SET menneskeID = ?, laaner = ? WHERE utstyrsID = ?';
+    const updateValues = [menneskeID, fornavn, utstyr];
+    console.log('Executing query:', updateQuery, updateValues);
+    let [updateResult] = await req.dbConnection.query(updateQuery, updateValues);
+    console.log('Result:', updateResult);
+    res.send("Laanet er godkjent"); 
   } else {
     res.send("Feil");
   }
@@ -220,42 +223,27 @@ if (passCheckResult[0].rolleID == 1) {
 })
 
 
-
-// app.post("/laan", async (req, res) => {
-//   const menneskeID = req.body.menneskeID;
-//   const laaner = req.body.utlaaner;
-//   const bookedEquipment = req.body.bookedEquipment;
-
-//   console.log(laaner)
-
-//   try {
-//     let query = 'UPDATE utstyr SET menneskeID = ?, laaner = ? WHERE utstyrsID = ?';
-//     let values = [menneskeID, laaner, bookedEquipment];
-//     console.log('Executing query:', query, values);
-//     let [result] = await req.dbConnection.query(query, values);
-//     console.log('Result:', result);
-//     res.send("Laanet er booket");
-//   } catch (err) {
-//     console.log(err);
-//     res.send("Feil");
-//   }
-
-// })
-
-app.post("/delete", async (req, res) => {
+app.post("/innlevering", async (req, res) => {
   const menneskeID = req.body.menneskeID;
   const bookedEquipment = req.body.bookedEquipment;
 
   try {
-    let query = 'UPDATE utstyr SET menneskeID = 0 WHERE utstyrsID = ?';
-    let values = [bookedEquipment];
+    let query = 'UPDATE utstyr SET menneskeID = 0, laaner = ? WHERE utstyrsID = ?';
+    let values = ["", bookedEquipment];
     console.log('Executing query:', query, values);
     let [result] = await req.dbConnection.query(query, values);
+ 
+      const unbookedQuery = 'UPDATE utlan SET Status = ? WHERE utstyrstype = ? AND elevID = ?';
+      const unbookedValues = ["Levert", bookedEquipment, menneskeID];
+      console.log('Executing query:', unbookedQuery, unbookedValues);
+      let [unbookedResult] = await req.dbConnection.query(unbookedQuery, unbookedValues);
+      console.log('Result:', unbookedResult);
+    
     console.log('Result:', result);
-    res.send("Laanet er avbestilt");
+    res.status(200).send("Laanet er booket");
   } catch (err) {
     console.log(err);
-    res.send("Feil");
+    res.send("Noe gikk galt. Kontakt IT.");
   }
 
 })

@@ -23,9 +23,10 @@ export default function StudentTable() {
                 <th>Fornavn</th>
                 <th>Etternavn</th>
                 <th>Klasse</th>
-                <th>tlf_foresatte</th>
-                <th>learer</th>
                 <th>tlf</th>
+                <th>tlf_foresatte</th>
+                <th>RolleID</th>
+
             </tr>
         </thead>
         <tbody>
@@ -35,9 +36,10 @@ export default function StudentTable() {
                 <td>{customer.Fornavn}</td>
                 <td>{customer.Etternavn}</td>
                 <td>{customer.Klasse}</td>
-                <td>{customer.tlf_foresatte}</td>
-                <td>{customer.learer}</td>
                 <td>{customer.tlf}</td>
+                <td>{customer.tlf_foresatte}</td>
+                <td>{customer.rolleID}</td>
+
                 
             </tr>
             ))}
