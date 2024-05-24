@@ -16,19 +16,6 @@ console.log(replacementMap)
 const port = process.env.PORT || 8081;
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
-
-// const httpOptions = {
-//   key: fs.readFileSync('C:/Certbot/live/mulighet.no-0003/privkey.pem', 'utf8'),
-//   cert: fs.readFileSync('C:/Certbot/live/mulighet.no-0003/fullchain.pem', 'utf8'),
-// };
-
-// const httpsServer = https.createServer(httpOptions, app);
-// const httpServer = http.createServer(app);
-
-// httpsServer.listen(process.env.PORT, () => {
-//   console.log(`HTTPS server is running on port ${process.env.PORT}`);
-// });
-
 const dbConfig = {
   user: 'root',
   password: 'root',

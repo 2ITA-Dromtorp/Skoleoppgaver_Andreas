@@ -1,0 +1,7 @@
+
+{
+    "Varer": {
+        "vare0":{"produktNavn":"Cola Zero","pris":28,"antall":30,"bildeBane":"https://www.dollarstore.no/wp-content/uploads/pckasse_upload/Coca-Cola-Zero-085L_1708336778_65d3268a34a45.jpg"},
+        "vare1":{"produktNavn":"Muffin Lys","pris":25,"antall":30,"bildeBane":"https://thefirstyearblog.com/wp-content/uploads/2020/05/Chocolate-Chip-Muffins-2023-Square.png"}
+    }
+}
