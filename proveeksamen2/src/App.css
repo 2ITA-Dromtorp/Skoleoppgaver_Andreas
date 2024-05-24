@@ -305,4 +305,18 @@ button {
     width: 80vw;
     font-size: 1.4em;
   }
+  .homepageContainer {
+    height: 70vh;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .homepageButtonDiv a {
+    width: 80%;
+  }
+  
+  .item {
+    height: 300px;
+    width: 250px;
+  }
 }

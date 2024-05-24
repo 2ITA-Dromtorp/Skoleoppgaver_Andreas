@@ -4,6 +4,7 @@ import Homepage from './homepage';
 import Products from './Products';
 import Handlekurv from './handlekurv';
 import NavBar from './NavBar';
+import Admin from './admin';
 import Kvittering from './kvittering';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { useContext, useState } from 'react';
@@ -16,6 +17,7 @@ function App() {
       <Route path="/products" element={<Products />} />
       <Route path="/handlekurv" element={<Handlekurv />} />
       <Route path="/kvittering" element={<Kvittering />} />
+      <Route path='/admin' element={<Admin/>}/>
     </Routes>
 
   );
