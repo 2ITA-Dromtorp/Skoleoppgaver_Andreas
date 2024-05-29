@@ -94,8 +94,8 @@ export default function Handlekurv() {
                 </div>
             </div>
         <div className='pageContainer'>
-            <div className='tømHandlekurvDiv'>
-                <button className='tømHandlekurv' onClick={toomHandlekurv}>Tøm handlekurv</button>
+            <div className='toomHandlekurvDiv'>
+                <button className='toomHandlekurv' onClick={toomHandlekurv}>Tøm handlekurv</button>
             </div>
             <div className='itemContainer'>
                 

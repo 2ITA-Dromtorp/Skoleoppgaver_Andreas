@@ -6,7 +6,10 @@ app.use(cors());
 const mysql = require('mysql2/promise'); // Use promise-based MySQL
 const varer = require("./varer.json")
 const port = process.env.PORT || 8081;
+const fs = require('node:fs/promises');
+const { copyFileSync } = require("node:fs");
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
 
 const dbConfig = {
     user: 'root',
@@ -15,6 +18,7 @@ const dbConfig = {
     host: 'localhost',
     port: 3306,
     connectionLimit: 100,
+    multipleStatements: true,
   };
 
 const pool = mysql.createPool(dbConfig);
@@ -131,21 +135,30 @@ app.get("/getMerchandise", async (req, res) => {
     const passCheckValues = [username, finalHashedPassword];
     let [passCheckResult] = await req.dbConnection.query(passCheckQuery, passCheckValues);
 
-    if (passCheckResult[0].brukernavn) {
-        let lengde = Object.keys(varer.Varer).length;
-        for (let i = 0; i < lengde; i++) {
-            let index = 1
-            let name = "vare"+[i]
-        let produktnavn = varer.Varer[name].produktNavn
-        let pris = varer.Varer[name].pris
-        let antall = varer.Varer[name].antall
-        let bildeBane = varer.Varer[name].bildeBane
-        const vareQuery = `INSERT INTO meny (produktNavn, pris, antall, bildeBane) VALUES (?, ?, ?, ?)`;
-        const vareValues = [produktnavn, pris, antall, bildeBane]
-        await req.dbConnection.query(vareQuery, vareValues)
+    if (passCheckResult[0].brukernavn){
+        const varePreParse = await fs.readFile("./varer.json")
+        const vare = JSON.parse(varePreParse)
+
+        let vareQuery = "";
+        let vareValues = [];
+        for (let i = 0; i < vare.length; i++) {
+            console.log(vare[i])
+            vareQuery += "INSERT INTO meny (produktNavn, pris, antall, bildeBane) VALUES (?, ?, ?, ?); ";
+            vareValues.push(vare[i].produktNavn, vare[i].pris, vare[i].antall, vare[i].bildeBane)
+        
         }
+        console.log("Query", vareQuery)
+        console.log("Values",vareValues)
+        const [result] = await req.dbConnection.query(vareQuery, vareValues, (err, res)=> { 
+        if(err) {
+            console.log(err)
+            return express.response.sendStatus(500)
+        } 
+        response.sendStatus(200)
+    }
+    )
         res.send("Varer lagt til")
-    } else {
+    }else {
         res.status(418)
     }
   });

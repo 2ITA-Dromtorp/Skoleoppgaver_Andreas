@@ -65,8 +65,9 @@ button {
   margin: 0 10% 0 10%;
     width: 80%;
     height: 10%;
-    border: 1px solid gray;
+    border: 1px solid black;
   transition: 0.2s;
+  background-color: lightgray;
 }
 
 .bestillKnapp:hover {
@@ -247,14 +248,14 @@ button {
   display: flex;
 }
 
-.tømHandlekurvDiv {
+.toomHandlekurvDiv {
   display: flex;
   width: 100vw;
   height: 10vh;
   margin-top: 1vh;
 }
 
-.tømHandlekurv {
+.toomHandlekurv {
   width: 40%;
   height: 100%;
   margin: 0 auto;
@@ -264,7 +265,7 @@ button {
   transition: 0.2s;
 }
 
-.tømHandlekurv:hover {
+.toomHandlekurv:hover {
   background-color: #003153;
   color: white;
   border: white 1px solid;
@@ -301,7 +302,7 @@ button {
     margin-top: 10%;
   }
 
-  .tømHandlekurv {
+  .toomHandlekurv {
     width: 80vw;
     font-size: 1.4em;
   }

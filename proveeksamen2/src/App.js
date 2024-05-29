@@ -13,8 +13,8 @@ function App() {
   return (
 
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/products" element={<Products />} />
+      {/* <Route path="/" element={<Homepage />} /> */}
+      <Route path="/" element={<Products />} />
       <Route path="/handlekurv" element={<Handlekurv />} />
       <Route path="/kvittering" element={<Kvittering />} />
       <Route path='/admin' element={<Admin/>}/>

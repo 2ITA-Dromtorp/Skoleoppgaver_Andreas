@@ -29,7 +29,7 @@ export default function Products() {
         <div className='pageContainer'>
             <div className='itemContainer'>
                 {merchData.map((merch) => (
-                    <div className='item' id={merch.produktID2}><img className='itemImage' src={merch.bildeBane}/><h2>{merch.produktNavn}</h2><p>{merch.pris} kr</p><button id={merch.produktID} className='bestillKnapp' onClick={(e) => bestill(e)}>Bestill</button></div>
+                    <div className='item' id={merch.produktID2}><img className='itemImage' src={merch.bildeBane}/><h2>{merch.produktNavn}</h2><p>{merch.pris} kr</p><p>{merch.antall}</p><button id={merch.produktID} className='bestillKnapp' onClick={(e) => bestill(e)}>Bestill</button></div>
                 ))}
             </div>
         </div>
