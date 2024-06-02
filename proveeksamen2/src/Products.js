@@ -20,29 +20,6 @@ export default function Products() {
     }, [onloadstart])
 
 
-  
-    let collatz = 6421
-    setInterval(function checkOddOrEven() {
-
-        console.log(collatz)
-        if (collatz & 1 == 1) {
-            // return "Number is odd";
-            collatz = collatz * 3 + 1
-            console.log(collatz)
-            checkOddOrEven()
-        } else if (collatz < 4) {
-            console.log("Ferdig")
-            alert("Ferdig")
-            collatz = null
-        }else {
-            // return "Number is even";
-            collatz = collatz / 2
-            console.log(collatz)
-            checkOddOrEven()
-        }
-
-    }, 1000/60);
-    checkOddOrEven()
     function bestill(e){
         const arrayOfId = JSON.parse(sessionStorage.getItem("produktId"));
         console.log(arrayOfId)
