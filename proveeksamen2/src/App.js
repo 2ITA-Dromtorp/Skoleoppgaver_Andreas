@@ -6,8 +6,7 @@ import Handlekurv from './handlekurv';
 import NavBar from './NavBar';
 import Admin from './admin';
 import Kvittering from './kvittering';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import {Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
