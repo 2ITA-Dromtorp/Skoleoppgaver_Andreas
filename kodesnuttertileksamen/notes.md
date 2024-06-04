@@ -44,6 +44,9 @@ export default function Products() {
         </div>
     ); 
 }
+```
+
+``` js
 
 // BACKEND
 
@@ -132,6 +135,9 @@ export default function Products() {
         </div>
     ); 
 }
+```
+
+```js
 
 //BACKEND
 
