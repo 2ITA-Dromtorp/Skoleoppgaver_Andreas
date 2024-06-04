@@ -8,6 +8,9 @@
 <summary>  Med forklaring</summary>
 
 ```jsx
+
+//FRONTEND
+
 //axios brukes fordi axios er best ;)
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -41,12 +44,71 @@ export default function Products() {
         </div>
     ); 
 }
+
+// BACKEND
+
+//Backend modulene vi bruker
+const express = require('express')
+const port = process.env.PORT || 8081
+const app = express()
+app.use(express.static("build"));
+app.use(express.json());
+const cors = require("cors")
+app.use(cors());
+const mysql = require('mysql2');
+
+// Et objekt med parameterene som brukes når vi kobler til databasen. dbConfig gjør ikke noe på egen hånd.
+const dbConfig = {
+    //Sjekk at brukernavn og passord stemmer, så lenge du bruker MAMP skal ikke dette være et problem (Om du heter Martin skal passordet være tomt, med mindre du har endret på det siden tirsdag 04.06.2024)
+    user: 'root',
+    password: 'root',
+    //husk å velge riktig databasenavn
+    database: 'kantinedatabase',
+    //Dette trenger du ikke endre selv hvis du skal ha front-end på en pc og back-end på en annen
+    host: 'localhost',
+    // Om du bruker MAC-OS kan det hende at du må bytte port.
+    port: 3306,
+}
+
+//Linjene under etablerer en tilkobling med databasen hver gang node-serveren starter, og bruker parameterene satt i dbConfig
+const connection = mysql.createConnection(dbConfig);
+connection.connect();
+connection.connect((err) => {   if (err) {
+    console.error('Error connecting to database:', err.stack);
+    return;}
+    console.log('Connected to database.'); });
+
+//Får node-serveren til å høre etter når noen sender en request til porten definert øverst i backend koden.
+app.listen(port, () => console.log("Server started" + port))
+
+app.get("/getMerchandise", async (req, res) => {
+    // Kobler til databasen og sender en spørring
+    connection.connect( function (err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          return;
+        }
+        console.log('connected as id ' + connection.threadId);
+      }
+      );
+      //SQL spørringen som sendes til databasen
+      connection.query('SELECT * FROM meny WHERE antall > 0', function (error, results, fields) {
+        if (error) throw error;
+        //Sender resultatet av spørringen til front-end
+        res.send(JSON.stringify(results))
+      });
+  });
+  
+
 ```
 </details>
 <details>
-<summary>  Bare kode</summary>
+    <summary>Bare kode</summary>
 
 ```jsx
+
+// FRONTEND
+
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -70,6 +132,53 @@ export default function Products() {
         </div>
     ); 
 }
+
+//BACKEND
+
+const express = require('express')
+const port = process.env.PORT || 8081
+const app = express()
+app.use(express.static("build"));
+app.use(express.json());
+const cors = require("cors")
+app.use(cors());
+const mysql = require('mysql2');
+
+
+const dbConfig = {
+    user: 'root',
+    password: 'root',
+    database: 'databasenavn',
+    host: 'localhost',
+    port: 3306,
+}
+
+const connection = mysql.createConnection(dbConfig);
+connection.connect();
+connection.connect((err) => {   if (err) {
+    console.error('Error connecting to database:', err.stack);
+    return;}
+    console.log('Connected to database.'); });
+
+app.listen(port, () => console.log("Server started" + port))
+
+app.get("/getData", async (req, res) => {
+    connection.connect( function (err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          return;
+        }
+        console.log('connected as id ' + connection.threadId);
+      }
+      );
+      connection.query('SELECT * FROM tabellnavn', function (error, results, fields) {
+        if (error) throw error;
+        console.log('The solution is: ', JSON.stringify(""));
+        res.send(JSON.stringify(results))
+      });      
+  });
+  
+
 ```
 </details>
 </details>
