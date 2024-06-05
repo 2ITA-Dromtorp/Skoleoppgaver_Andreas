@@ -24,7 +24,7 @@ function HomePage() {
         <div className='pageContainer'>
             <div className='itemContainer'>
                 {arrayData.map((array) => (
-                  <div className='item' id={array.produktID2}><img className='itemImage' src={array.bildeBane}/><h2>{array.produktNavn}</h2><p>{array.pris} kr</p><p>{array.antall} igjen</p><button id={array.produktID} className='bestillKnapp' onClick={(e) => bestill(e)}>Bestill</button></div>
+                  <div className='item' id={array.produktID2}><img className='itemImage' src={array.bildeBane}/><h2>{array.produktNavn}</h2><h3>{array.pris},-</h3><p>{array.antall} på lager</p><button id={array.produktID} className='bestillKnapp' onClick={(e) => bestill(e)}>Bestill</button></div>
                 ))}
             </div>
         </div>
