@@ -15,7 +15,7 @@ export default function NavBar() {
         <nav className='navBar'>
         <Link className='navlogoDiv' to={"/"}> 
         
-            <img className='logo' src={logo}/>
+            <h1 className='logoText'>TicketSystem</h1>
         
         </Link> 
           <div className='navbuttonDiv'>
