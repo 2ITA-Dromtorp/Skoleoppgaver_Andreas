@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 
 export default function Login() {
     const [formData, setFormData] = useState({
-        username: '',
-        password: ''
+        epost: '',
+        passord: ''
     });
 
 
@@ -33,8 +33,8 @@ export default function Login() {
         <div>
             <form onSubmit={handleSubmit}>
                 <h1>Registrer</h1>
-                <input id="username" type="text" placeholder="Brukernavn" onChange={handleChange} value={formData.username}/>
-                <input id="password" type="password" placeholder="Passord" onChange={handleChange} value={formData.password} />
+                <input id="epost" type="text" placeholder="Epost" onChange={handleChange} value={formData.epost}/>
+                <input id="passord" type="password" placeholder="Passord" onChange={handleChange} value={formData.password} />
                 <button type="submit">Registrer</button>
             </form>
         </div>  
