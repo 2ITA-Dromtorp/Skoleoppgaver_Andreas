@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -8,6 +7,8 @@ function HomePage() {
     const [arrayData, setArrayData] = useState([]);
     
     useEffect(() => {
+      const produktIdFromSession = JSON.parse(sessionStorage.getItem("produktId")) || sessionStorage.getItem("produktId");
+      if(produktIdFromSession==null || produktIdFromSession.length && produktIdFromSession.length<1) sessionStorage.setItem("produktId",JSON.stringify([]));
       axios.get('/getMerchandise').then((response) => {
         console.log(response.data)
         setArrayData(response.data)
@@ -16,9 +17,14 @@ function HomePage() {
 
 
     function bestill(e){
-      let selectedID = e.target.id
-      console.log(selectedID)
-    }
+
+      
+      const arrayOfId = JSON.parse(sessionStorage.getItem("produktId"));
+      console.log(arrayOfId)
+      console.log(e.target.id)
+      arrayOfId.push(e.target.id)
+      sessionStorage.setItem("produktId", JSON.stringify(arrayOfId));
+  }
 
     return (
         <div className='pageContainer'>

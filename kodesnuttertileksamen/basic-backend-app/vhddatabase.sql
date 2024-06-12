@@ -54,8 +54,8 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ID`, `produktNavn`, `pris`, `antall`, `beskrivelse`, `specs`, `bildeBane`) VALUES
-(1, 'Lenovo Yogaslim 7', 10000, 1000, 'Kommer snart', 'Veldig bra', 'https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MTIxNTg5fGltYWdlL2pwZWd8aDA2L2hhNC8xMDY5NTkyNjIxODc4Mi5qcGd8ZDdhNjM5MjRjOTAyYzE2ZjY5NmEwYmNkMDg5MTdjM2VhZjA2NDZhMTJlOWJlZDY5MmE1MzcxMWE1YTFkZTE4YQ/-gallery-9.jpg');
+INSERT INTO `products` (`produktNavn`, `pris`, `antall`, `beskrivelse`, `specs`, `bildeBane`) VALUES
+('Lenovo Yoga Slim 7 Ultra 5-125H/16/512 14" bærbar PC', 10000, 1000, 'Kommer snart', 'Veldig bra', 'https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MTIxNTg5fGltYWdlL2pwZWd8aDA2L2hhNC8xMDY5NTkyNjIxODc4Mi5qcGd8ZDdhNjM5MjRjOTAyYzE2ZjY5NmEwYmNkMDg5MTdjM2VhZjA2NDZhMTJlOWJlZDY5MmE1MzcxMWE1YTFkZTE4YQ/-gallery-9.jpg');
 
 --
 -- Indexes for dumped tables
