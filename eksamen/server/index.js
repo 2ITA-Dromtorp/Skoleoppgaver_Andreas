@@ -8,7 +8,7 @@ app.use(express.json());
 const dbConfig = {
   user: 'root',
   password: 'root',
-  database: 'ticketsystem',
+  database: 'Ball-IL',
   host: 'localhost',
   port: 3306,
 };
