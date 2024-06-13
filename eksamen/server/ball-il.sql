@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 13. Jun, 2024 13:52 PM
+-- Generation Time: 13. Jun, 2024 20:43 PM
 -- Tjener-versjon: 5.7.24
--- PHP Version: 8.0.1
+-- PHP Version: 8.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,6 @@ CREATE TABLE `brukere` (
   `etterNavn` varchar(70) NOT NULL,
   `passord` varchar(80) NOT NULL,
   `rolle` tinyint(1) NOT NULL DEFAULT '1',
-  `sport` int(3) NOT NULL,
   `tlf` varchar(9) NOT NULL,
   `foresatteTlf` varchar(15) NOT NULL DEFAULT 'Ingen'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -43,10 +42,11 @@ CREATE TABLE `brukere` (
 -- Dataark for tabell `brukere`
 --
 
-INSERT INTO `brukere` (`brukerID`, `brukerNavn`, `forNavn`, `etterNavn`, `passord`, `rolle`, `sport`, `tlf`, `foresatteTlf`) VALUES
-(1, 'admin', 'admin', 'admin', '$2b$10$UIJB.FdNJuCvenAyrK3oQ.5XrBSRXonsysg5MeSdCNi33NXdrjSK.', 2, 1, '0', 'Ingen'),
-(2, 'matheopan', 'Matheo Kant', 'Pangopoulos', '$2b$10$CZwZD.cx9ZNdZIdOZIjW0eTegf42hgz8.yPZ767lhBAbmzSnAaN8a', 1, 3, '3829198', 'Ingen'),
-(3, 'andreaskri', 'Andreas Hurlen', 'Kristiansen', '$2b$10$tjTjommXw0nF3B42hHWuIegZO/2RlUwzSlQBJM7rARs3QkXTQLQ02', 1, 3, '38219394', 'Ingen');
+INSERT INTO `brukere` (`brukerID`, `brukerNavn`, `forNavn`, `etterNavn`, `passord`, `rolle`, `tlf`, `foresatteTlf`) VALUES
+(1, 'admin', 'admin', 'admin', '$2b$10$UIJB.FdNJuCvenAyrK3oQ.5XrBSRXonsysg5MeSdCNi33NXdrjSK.', 2, '0', 'Ingen'),
+(2, 'matheopan', 'Matheo Kant', 'Pangopoulos', '$2b$10$CZwZD.cx9ZNdZIdOZIjW0eTegf42hgz8.yPZ767lhBAbmzSnAaN8a', 1, '3829198', 'Ingen'),
+(3, 'andreaskri', 'Andreas Hurlen', 'Kristiansen', '$2b$10$tjTjommXw0nF3B42hHWuIegZO/2RlUwzSlQBJM7rARs3QkXTQLQ02', 1, '38219394', 'Ingen'),
+(4, 'andreasrov', 'Andreas', 'Rovde', '$2b$10$f1DUE92/S27wywD5hcnXHOCjlPGBMe7qn4LDbduBp6CEJhF9VOYC2', 1, '40677075', '');
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,7 @@ INSERT INTO `sporter` (`sportID`, `sportNavn`) VALUES
 CREATE TABLE `turneringer` (
   `turneringsID` int(7) NOT NULL,
   `turneringsNavn` varchar(200) NOT NULL,
-  `turneringsDato` varchar(200) NOT NULL,
+  `turneringsDato` varchar(16) NOT NULL,
   `turneringsAdresse` varchar(200) NOT NULL,
   `turneringsSport` int(3) NOT NULL,
   `turneringsBilde` varchar(1000) NOT NULL
@@ -108,7 +108,11 @@ CREATE TABLE `turneringer` (
 --
 
 INSERT INTO `turneringer` (`turneringsID`, `turneringsNavn`, `turneringsDato`, `turneringsAdresse`, `turneringsSport`, `turneringsBilde`) VALUES
-(1, 'Fotball sparking', 'nå', 'Ellelia 10', 3, 'https://www.intersport.no/dw/image/v2/BBWT_PRD/on/demandware.static/-/Sites-intersport-master-catalog/default/dw0067f60b/images/iic-adidas-tc950-h57783-dynamic-x-0003.jpg?sw=334&sh=334&sm=fit');
+(1, 'Fotball sparking', '2024-06-15', 'Ellelia 10', 3, './images/fotball.jpg'),
+(2, 'Volleyball Turnering', '2024-06-16', 'Dynamittveien 7', 3, './images/volleyball.jpg'),
+(3, 'Håndball Turnering', '2024-06-17', 'Dynamittveien 7', 2, './images/haandball.png'),
+(4, 'Fotball Turnering Nordby', '2024-06-21', 'Nordby Kunstgressbane', 1, './images/fotball.jpg'),
+(5, 'Håndball Nordby', '2024-07-27', 'Nordby Kunstgressbane', 2, './images/haandball.png');
 
 --
 -- Indexes for dumped tables
@@ -119,8 +123,7 @@ INSERT INTO `turneringer` (`turneringsID`, `turneringsNavn`, `turneringsDato`, `
 --
 ALTER TABLE `brukere`
   ADD PRIMARY KEY (`brukerID`),
-  ADD KEY `rolle` (`rolle`),
-  ADD KEY `sport` (`sport`);
+  ADD KEY `rolle` (`rolle`);
 
 --
 -- Indexes for table `roller`
@@ -149,7 +152,7 @@ ALTER TABLE `turneringer`
 -- AUTO_INCREMENT for table `brukere`
 --
 ALTER TABLE `brukere`
-  MODIFY `brukerID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `brukerID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `roller`
@@ -167,7 +170,7 @@ ALTER TABLE `sporter`
 -- AUTO_INCREMENT for table `turneringer`
 --
 ALTER TABLE `turneringer`
-  MODIFY `turneringsID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `turneringsID` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Begrensninger for dumpede tabeller
@@ -177,8 +180,7 @@ ALTER TABLE `turneringer`
 -- Begrensninger for tabell `brukere`
 --
 ALTER TABLE `brukere`
-  ADD CONSTRAINT `rolle` FOREIGN KEY (`rolle`) REFERENCES `roller` (`rolleID`),
-  ADD CONSTRAINT `sport` FOREIGN KEY (`sport`) REFERENCES `sporter` (`sportID`);
+  ADD CONSTRAINT `rolle` FOREIGN KEY (`rolle`) REFERENCES `roller` (`rolleID`);
 
 --
 -- Begrensninger for tabell `turneringer`

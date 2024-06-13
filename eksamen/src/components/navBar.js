@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
 import '../navStyles.css'
-import logo from '../images/logo.webp';
 import { User, Home } from 'lucide-react';
 
 export default function NavBar() {

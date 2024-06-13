@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 
+
 const app = express();
 app.use(express.json());
 
@@ -45,16 +46,12 @@ app.post("/api/getTournaments", async (req, res) => {
     if (authenticateResult == "authenticated") {
       // Continue with the getTournaments logic here
       console.log("registrert");
-      let query = 'SELECT sport FROM brukere WHERE brukerNavn = ?';
-      let values = [brukerNavn];
-      connection.query(query, values, async function (error, results, fields) {
-        let tournamentQuery = 'SELECT * FROM turneringer WHERE turneringsSport = ?';
-        let tournamentValues = [results[0].sport];
-        connection.query(tournamentQuery, tournamentValues, function (error, results, fields) {
-          if (error) throw error;
-          res.send(JSON.stringify(results));
-        });
-      })
+
+      connection.query('SELECT * FROM turneringer', function (error, results, fields) {
+        if (error) throw error;
+        res.send(JSON.stringify(results));
+      });
+
       // const tournaments = await getTournaments(); // Assuming you have a function to fetch tournaments
       // res.send(JSON.stringify(tournaments));
     } else {
@@ -112,20 +109,70 @@ app.post("/api/getPlayers", async (req, res) => {
     res.status(500).send({ error: "Internal Server Error" });
   }
 });
-app.post("/api/register", async (req, res) => {
+app.post("/api/addUser", async (req, res) => {
   try {
-    let userCredentials = req.body;
-    let epost = userCredentials.epost;
-    let passord = userCredentials.passord;
-    let tlf = userCredentials.tlf;
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(passord, salt);
-    let query = 'INSERT INTO brukere (epost, passord, tlf) VALUES (?, ?, ?)';
-    let values = [epost, hash, tlf];
-    connection.query(query, values, function (error, results, fields) {
-      if (error) throw error;
-      res.send(JSON.stringify(results));
-    });
+    let AdminbrukerNavn = req.body.brukerNavn;
+    let Adminpassord = req.body.passord;
+    const authenticateResult = await authenticate(AdminbrukerNavn, Adminpassord);
+    console.log(authenticateResult);
+
+    if (authenticateResult == "authenticated") {
+      // Continue with the getTournaments logic here
+      console.log("registrert");
+      let userCredentials = req.body.userFormData;
+      let brukerNavn = userCredentials.brukerNavn;
+      let forNavn = userCredentials.forNavn;
+      let etterNavn = userCredentials.etterNavn;
+      let passord = userCredentials.passord;
+      let tlf = userCredentials.tlf;
+      let foresatteTlf = userCredentials.foresatteTlf;
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(passord, salt);
+      let query = 'INSERT INTO brukere (brukerNavn, forNavn, etterNavn, passord, tlf, foresatteTlf) VALUES (?, ?, ?, ?, ?, ?)';
+      let values = [brukerNavn, forNavn, etterNavn, hash, tlf, foresatteTlf];
+      connection.query(query, values, function (error, results, fields) {
+        if (error) throw error;
+        res.send(JSON.stringify(results));
+      });
+    } else {
+      console.log("ikke registrert");
+      res.send(JSON.stringify("Feil brukernavn eller passord"));
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle the error appropriately
+  }
+});
+
+app.post("/api/addTournament", async (req, res) => {
+  try {
+    let AdminbrukerNavn = req.body.brukerNavn;
+    let Adminpassord = req.body.passord;
+    const authenticateResult = await authenticate(AdminbrukerNavn, Adminpassord);
+    console.log(authenticateResult);
+
+    if (authenticateResult == "authenticated") {
+      // Continue with the getTournaments logic here
+      console.log("registrert");  
+
+      let tournamentInfo = req.body.tournamentFormData;
+      let turneringsNavn = tournamentInfo.turneringsNavn;
+      let turneringsDato = tournamentInfo.turneringsDato;
+      let turneringsAdresse = tournamentInfo.turneringsAdresse;
+      let turneringsSport = tournamentInfo.turneringsSport;
+      let turneringsBilde = tournamentInfo.turneringsBilde;
+
+
+      let query = 'INSERT INTO turneringer (turneringsNavn, turneringsDato, turneringsAdresse, turneringsSport, turneringsBilde) VALUES (?, ?, ?, ?, ?)';
+      let values = [turneringsNavn, turneringsDato, turneringsAdresse, turneringsSport, turneringsBilde];
+      connection.query(query, values, function (error, results, fields) {
+        if (error) throw error;
+        res.send(JSON.stringify(results));
+      });
+    } else {
+      console.log("ikke registrert");
+      res.send(JSON.stringify("Feil brukernavn eller passord"));
+    }
   } catch (error) {
     console.error(error);
     // Handle the error appropriately
@@ -184,6 +231,31 @@ app.post("/api/submitTicket", async (req, res) => {
   } catch (error) {
     console.error(error);
     // Handle the error appropriately
+  }
+});
+
+app.post("/api/isUserAdmin", async (req, res) => {
+  const brukerNavn = req.body.brukerNavn;
+  const passord = req.body.passord;
+
+  const authenticateResult = await authenticate(brukerNavn, passord);
+  if (authenticateResult == "authenticated") {
+    // Continue with the getTournaments logic here
+    console.log("registrert");
+    let query = 'SELECT rolle FROM brukere WHERE brukerNavn = ?';
+    let values = [brukerNavn];
+    connection.query(query, values, async function (error, results, fields) {
+      if (results[0].rolle == 2) {
+        console.log("admin");
+        res.send(JSON.stringify("true"));
+      } else {
+        console.log("ikke admin");
+        res.send(JSON.stringify("false"));
+      }
+    })
+  } else {
+    console.log("ikke registrert");
+    res.send(JSON.stringify("Feil brukernavn eller passord"));
   }
 });
 

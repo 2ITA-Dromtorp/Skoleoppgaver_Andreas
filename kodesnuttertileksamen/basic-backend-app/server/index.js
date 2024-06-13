@@ -12,7 +12,7 @@ const dbConfig = {
     user: 'root',
     password: 'root',
     //husk å velge riktig databasenavn
-    database: 'vhddatabase',
+    database: 'kantinedatabase',
     host: 'localhost',
     // Om du bruker MAC-OS kan det hende at du må bytte port.
     port: 3306,
@@ -37,7 +37,7 @@ app.get("/getMerchandise", async (req, res) => {
         console.log('connected as id ' + connection.threadId);
       }
       );
-      connection.query('SELECT * FROM products WHERE antall > 0', function (error, results, fields) {
+      connection.query('SELECT * FROM meny WHERE antall > 0', function (error, results, fields) {
         if (error) throw error;
         console.log('The solution is: ', JSON.stringify(""));
         res.send(JSON.stringify(results))
@@ -45,4 +45,4 @@ app.get("/getMerchandise", async (req, res) => {
 
       
   });
-  
+   

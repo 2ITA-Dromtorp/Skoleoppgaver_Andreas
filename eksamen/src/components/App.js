@@ -6,6 +6,7 @@ import Login from './login';
 import TicketSystem from './ticketSystem';
 import Turneringer from './turneringer';
 import Spillere from './spillere';
+import Admin from './admin';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/ticketSystem" element={<TicketSystem />} />
       <Route path="/turneringer" element={<Turneringer />} />
       <Route path="/spillere" element={<Spillere />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 

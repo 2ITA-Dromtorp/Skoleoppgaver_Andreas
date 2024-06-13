@@ -24,10 +24,10 @@ export default function Turneringer() {
         <div className="turneringContainer">
             {turneringer.map((turnering) => (
                 <div className="turneringerDiv">
-                    <p className="turneringerP">{turnering.turneringsNavn}</p>
+                    <img className="turneringerImg" src={turnering.turneringsBilde}/>
+                    <h2 className="turneringerH2">{turnering.turneringsNavn}</h2>
                     <p className="turneringerP">{turnering.turneringsDato}</p>
                     <p className="turneringerP">{turnering.turneringsAdresse}</p>
-                    <img className="turneringerImg" src={turnering.turneringsBilde}/>
                 </div>
             ))}
         </div>
