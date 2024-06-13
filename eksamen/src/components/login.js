@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 
 export default function Login() {
     const [formData, setFormData] = useState({
-        epost: '',
+        brukerNavn: '',
         passord: ''
     });
+    const [loginStatus, setLoginStatus] = useState('');
 
 
     const handleChange = (event) => {
@@ -18,10 +19,17 @@ export default function Login() {
 
     const handleSubmit = (event) => {
 
-        console.log(formData);
+
         axios.post('/api/login', formData)
             .then(response => {
                 console.log(response.data);
+                if(response.data.message === "Logget inn"){
+                    sessionStorage.setItem("username", response.data.brukerNavn);
+                    sessionStorage.setItem("password", response.data.passord);
+                    setLoginStatus(response.data.message);
+                } else {
+                    setLoginStatus(response.data);
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -30,13 +38,16 @@ export default function Login() {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Registrer</h1>
-                <input id="epost" type="text" placeholder="Epost" onChange={handleChange} value={formData.epost}/>
-                <input id="passord" type="password" placeholder="Passord" onChange={handleChange} value={formData.password} />
-                <button type="submit">Registrer</button>
+        <div className='loginContainer'>
+              <div className="loginCard">
+            <form className='loginForm' onSubmit={handleSubmit}>
+                <h1 className='loginText'>Logg inn</h1>
+                <input className='loginInput' id="brukerNavn" type="text" placeholder="Brukernavn" onChange={handleChange} value={formData.brukerNavn}/>
+                <input className='loginInput' id="passord" type="password" placeholder="Passord" onChange={handleChange} value={formData.passord} />
+                <button className='loginButton' type="submit">Logg inn</button>
+                <h2 className="loginStatus">{loginStatus}</h2>
             </form>
+            </div>
         </div>  
     )
 }

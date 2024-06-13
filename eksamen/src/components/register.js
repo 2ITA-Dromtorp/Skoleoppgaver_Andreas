@@ -35,7 +35,7 @@ export default function Register() {
         <div>
             <form onSubmit={handleSubmit}>
                 <h1>Registrer</h1>
-                <input id="epost" type="text" placeholder="Epost" onChange={handleChange} value={formData.epost}/>
+                <input id="epost" type="email" placeholder="Epost" onChange={handleChange} value={formData.epost}/>
                 <input id="passord" type="password" placeholder="Passord" onChange={handleChange} value={formData.passord} />
                 <input id="tlf" type="text" placeholder="Tlf. nummer" onChange={handleChange} value={formData.tlf}/>
                 <button type="submit">Registrer</button>

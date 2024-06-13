@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import logo from "./images/logo.webp";
 
 function HomePage() {
 
@@ -7,7 +7,8 @@ function HomePage() {
     return (
         <div className='pageContainer'>
             <h1>Velkommen til TicketSystem</h1>
-            <Link to={"/ticket"} className='homepageButton'>Opprett en ticket</Link>
+            <Link to={"/turneringer"} className='homepageButton'>Turneringer</Link>
+            <Link to={"/spillere"} className='homepageButton'>Spillere</Link>
         </div>
     ); 
 }
