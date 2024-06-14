@@ -12,11 +12,11 @@ export default function NavBar() {
         <nav className='navBar'>
         <Link className='navlogoDiv' to={"/"}> 
         
-            <div className='logo'><Home/></div>
+            <div className='logo'><Home alt="Hjemknapp"/></div>
 
         </Link> 
           <div className='navbuttonDiv'>
-          <Link className='navbuttonsubDiv' to={'/register'}> <div className='logo'><User/></div></Link>
+          <Link className='navbuttonsubDiv' to={'/login'}> <div className='logo'><User alt="innlogging"/></div></Link>
           </div>
         </nav>
         </header>

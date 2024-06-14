@@ -1,13 +1,17 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+
     const [formData, setFormData] = useState({
         brukerNavn: '',
         passord: ''
     });
     const [loginStatus, setLoginStatus] = useState('');
 
+
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const { id, value } = event.target;
@@ -27,6 +31,7 @@ export default function Login() {
                     sessionStorage.setItem("username", response.data.brukerNavn);
                     sessionStorage.setItem("password", response.data.passord);
                     setLoginStatus(response.data.message);
+                    navigate("/");
                 } else {
                     setLoginStatus(response.data);
                 }
@@ -40,8 +45,9 @@ export default function Login() {
     return (
         <div className='loginContainer'>
               <div className="loginCard">
+              <h1 className='loginText'>Logg inn</h1>
             <form className='loginForm' onSubmit={handleSubmit}>
-                <h1 className='loginText'>Logg inn</h1>
+
                 <input className='loginInput' id="brukerNavn" type="text" placeholder="Brukernavn" onChange={handleChange} value={formData.brukerNavn}/>
                 <input className='loginInput' id="passord" type="password" placeholder="Passord" onChange={handleChange} value={formData.passord} />
                 <button className='loginButton' type="submit">Logg inn</button>

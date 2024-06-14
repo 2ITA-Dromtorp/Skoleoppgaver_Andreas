@@ -23,14 +23,17 @@ function HomePage() {
     useEffect(() => {
         fetchData();
     }, []);
+
+    function logout() {
+        sessionStorage.clear();
+        window.location.reload();
+    }
   
     return (
 <div className='pageContainer'>
-    <h1>Velkommen til TicketSystem</h1>
     <Link to={"/turneringer"} className='homepageButton'>Turneringer</Link>
-    <Link to={"/spillere"} className='homepageButton'>Spillere</Link>
     {adminStatus === "true" && <Link to={"/admin"} className='homepageButton'>Admin</Link>}
-    {adminStatus === "true" && adminStatus}
+    {brukerNavn && <a onClick={logout} style={{color: "blue", textDecoration: "underline"}}>Logg ut</a>}
 </div>
     ); 
 }

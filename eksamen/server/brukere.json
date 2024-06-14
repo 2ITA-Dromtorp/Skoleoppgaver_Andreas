@@ -1,0 +1,5 @@
+
+[
+        {"brukerNavn":"vetlefon","forNavn":"Vetle", "etterNavn":"Fongen", "passord":"Skole123", "sport":"2", "tlf":"12345678", "foresatteTlf":"12345678"},
+        {"brukerNavn":"vanessapfe","forNavn":"Vanessa Ida", "etterNavn":"Pfeifer", "passord":"Skole123", "sport":"4", "tlf":"12345678", "foresatteTlf":""}
+]

@@ -11,6 +11,7 @@ export default function Admin() {
         passord: '',
         forNavn: '',
         etterNavn: '',
+        sport: '2',
         tlf: '',
         foresatteTlf: ''
     });
@@ -111,6 +112,13 @@ export default function Admin() {
 
             <label htmlFor="etterNavn">Etternavn:</label>
             <input type="text" id="etterNavn" name="etterNavn" onChange={handleUserChange} />
+
+            <label htmlFor='sport'>Sport:</label>
+            <select id="sport" name="sport" onChange={handleUserChange}>
+                <option value="2">Fotball</option>
+                <option value="3">Håndball</option>
+                <option value="4">Volleyball</option>
+            </select>
 
             <label htmlFor="tlf">Tlf:</label>
             <input type="text" id="tlf" name="tlf" onChange={handleUserChange} />
